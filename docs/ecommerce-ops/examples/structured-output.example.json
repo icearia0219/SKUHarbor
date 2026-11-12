@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "task_id": "DEMO-TASK-US-001",
+  "task_type": "listing_pack",
+  "workspace_id": "demo-ecommerce",
+  "market": "US",
+  "locale": "en-US",
+  "as_of": "2026-11-12T14:00:00Z",
+  "product_refs": [
+    {
+      "product_id": "DEMO-HEATER-US",
+      "sku": "DEMO-US-1500",
+      "revision": "demo-facts-us-v1",
+      "market": "US"
+    }
+  ],
+  "input_revision": "demo-input-us-v1",
+  "policy_snapshot_id": "demo-rule-us-v1",
+  "status": "draft",
+  "payload": {
+    "title": "DEMO Electric Heater, 1500 W, 120 V",
+    "bullets": [
+      "Rated power: 1500 W.",
+      "Rated voltage: 120 V."
+    ],
+    "description": "Demonstration draft based on synthetic product facts. This text is not a verified description of a real product.",
+    "search_terms": [],
+    "rule_coverage": "partial",
+    "unchecked_rules": [
+      "Live marketplace and product-type rules have not been validated."
+    ]
+  },
+  "claims": [
+    {
+      "claim_id": "claim-power",
+      "text": "Rated power: 1500 W.",
+      "field_path": "/payload/title",
+      "evidence_refs": [
+        "ev-us-power"
+      ]
+    },
+    {
+      "claim_id": "claim-voltage",
+      "text": "Rated voltage: 120 V.",
+      "field_path": "/payload/title",
+      "evidence_refs": [
+        "ev-us-voltage"
+      ]
+    },
+    {
+      "claim_id": "claim-bullet-power",
+      "text": "Rated power: 1500 W.",
+      "field_path": "/payload/bullets/0",
+      "evidence_refs": [
+        "ev-us-power"
+      ]
+    },
+    {
+      "claim_id": "claim-bullet-voltage",
+      "text": "Rated voltage: 120 V.",
+      "field_path": "/payload/bullets/1",
+      "evidence_refs": [
+        "ev-us-voltage"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "ev-us-power",
+      "source_id": "synthetic-us-spec-v1",
+      "kind": "product_fact",
+      "locator": "/facts/rated_power_w",
+      "content_hash": "70f977ec53c09ac6e7ec0eb40a0a9fe584cbe7f4173caa8f0a373d283134a649",
+      "provenance": "synthetic",
+      "excerpt": "rated_power_w = 1500; market = US; sku = DEMO-US-1500"
+    },
+    {
+      "evidence_id": "ev-us-voltage",
+      "source_id": "synthetic-us-spec-v1",
+      "kind": "product_fact",
+      "locator": "/facts/rated_voltage_v",
+      "content_hash": "5fca1ac3bc465f911509c807212ed0caccdfa5987981780ebac2595afb26634a",
+      "provenance": "synthetic",
+      "excerpt": "rated_voltage_v = 120; market = US; sku = DEMO-US-1500"
+    }
+  ],
+  "issues": [
+    {
+      "code": "DEMO_DATA_ONLY",
+      "severity": "warning",
+      "message": "Synthetic example; not approved and not an Amazon submission payload.",
+      "field": null
+    }
+  ],
+  "usage": {
+    "model_ref": null,
+    "input_tokens": null,
+    "output_tokens": null,
+    "retry_count": 0,
+    "model_elapsed_ms": null,
+    "cost_usd": null,
+    "price_version": null
+  }
+}

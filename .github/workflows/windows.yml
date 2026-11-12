@@ -1,0 +1,34 @@
+name: Windows smoke
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+      - name: Install locked dependencies and build all projects
+        run: npm.cmd run setup:windows
+      - name: Verify Windows entry points and developer tooling
+        run: npm.cmd run test:windows-tooling
+      - name: Verify native process and filesystem behavior
+        run: npm.cmd run test:windows-core
+      - name: Verify browser to Host Runner flow
+        run: npm.cmd run test:windows-browser
+      - name: Typecheck backend
+        run: npm.cmd run typecheck
+      - name: Check repository documentation
+        run: npm.cmd run docs:check

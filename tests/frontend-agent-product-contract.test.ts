@@ -55,8 +55,10 @@ describe('Agent-first frontend product contracts', () => {
 
   it('preserves actual Dot names independently of role and uses a neutral missing-name fallback', () => {
     expect(getAgentProfileDisplayName('Default Agent')).toBe('Default Agent');
-    expect(getAgentProfileDisplayName(undefined)).toBe('OpenDot');
+    expect(getAgentProfileDisplayName(undefined)).toBe('SKUHarbor');
     expect(getAgentProfileDisplayName('代码审查员')).toBe('代码审查员');
+    expect(getAgentProfileDisplayName('Miniclaw')).toBe('Miniclaw');
+    expect(getAgentProfileDisplayName('OpenDot')).toBe('OpenDot');
   });
 
   it('keeps the Agent management page scoped to custom Agents', () => {

@@ -1,4 +1,6 @@
-# Ecommerce Ops 增量约束
+# SKUHarbor Ecommerce Ops 增量约束
+
+当前产品品牌为 SKUHarbor，基于 OpenDot 二次开发。保留上游版权、许可证与历史证据；对外产品名使用 SKUHarbor，环境变量、协议、数据和用户自定义名称保留兼容。`docs/ecommerce-ops/next-slice/` 为用户提供的下一阶段评审/计划，本次改名与上传不等于已经实施该计划。
 
 沿用 CLAUDE.md 与 DESIGN.md。场景文档见 docs/ecommerce-ops/；业务域 src/ecommerce-ops/；测试 tests/ecommerce-ops/。
 

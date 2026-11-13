@@ -22422,6 +22422,6 @@ async function checkImBindingsHealth(): Promise<void> {
 }
 
 main().catch((err) => {
-  logger.error({ err }, 'Failed to start miniclaw');
+  logger.error({ err }, 'Failed to start SKUHarbor');
   process.exit(1);
 });

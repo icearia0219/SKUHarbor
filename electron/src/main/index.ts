@@ -10,7 +10,7 @@ import {
 import fs from 'node:fs';
 import path from 'node:path';
 
-const APP_NAME = 'OpenDot';
+const APP_NAME = 'SKUHarbor';
 const DEFAULT_SERVER_URL = 'http://127.0.0.1:3000';
 const WINDOW_DEFAULTS = {
   width: 1440,
@@ -71,12 +71,12 @@ function resolveDesktopUrls(): { serverUrl: string; rendererUrl: string } {
     getCliValue('--server-url') ||
     process.env.MINICLAW_SERVER_URL ||
     DEFAULT_SERVER_URL;
-  const serverUrl = normalizeHttpUrl(serverValue, 'OpenDot server URL');
+  const serverUrl = normalizeHttpUrl(serverValue, 'SKUHarbor server URL');
   const rendererValue =
     getCliValue('--renderer-url') ||
     process.env.MINICLAW_RENDERER_URL ||
     serverUrl;
-  const rendererUrl = normalizeHttpUrl(rendererValue, 'OpenDot renderer URL');
+  const rendererUrl = normalizeHttpUrl(rendererValue, 'SKUHarbor renderer URL');
   return { serverUrl, rendererUrl };
 }
 
@@ -179,9 +179,9 @@ async function openExternalUrl(rawUrl: string): Promise<void> {
 function showAbout(): Promise<Electron.MessageBoxReturnValue> {
   const options = {
     type: 'info',
-    title: 'About OpenDot',
-    message: 'OpenDot',
-    detail: `Pi Agent Runtime workspace\nVersion ${app.getVersion()}`,
+    title: 'About SKUHarbor',
+    message: 'SKUHarbor',
+    detail: `Ecommerce operations Copilot\nBased on OpenDot / Pi Runtime\nVersion ${app.getVersion()}`,
   } as const;
   return mainWindow && !mainWindow.isDestroyed()
     ? dialog.showMessageBox(mainWindow, options)
@@ -191,7 +191,7 @@ function showAbout(): Promise<Electron.MessageBoxReturnValue> {
 function errorPageHtml(failedUrl: string): string {
   const safeUrl = JSON.stringify(failedUrl).replace(/</g, '\\u003c');
   return `<!doctype html>
-<html><head><meta charset="utf-8"><title>OpenDot is unavailable</title>
+<html><head><meta charset="utf-8"><title>SKUHarbor is unavailable</title>
 <style>
 :root{--bg:#ffffff;--surface:#fafafa;--fg:#222222;--muted:#45515e;--border:#e5e7eb;--accent:#1456f0;--accent-on:#ffffff}
 @media(prefers-color-scheme:dark){:root{--bg:#111318;--surface:#171a20;--fg:#f3f5f7;--muted:#a8b0bd;--border:#303641;--accent:#8fb1ff;--accent-on:#111318}}
@@ -201,7 +201,7 @@ h1{font-size:24px;font-weight:500}p{color:var(--muted);line-height:1.5}code{word
 button{min-height:44px;border:0;border-radius:8px;background:var(--accent);color:var(--accent-on);padding:8px 16px;font:inherit;cursor:pointer}
 button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 </style>
-</head><body><main><h1>OpenDot Backend 未连接</h1><p>请先启动 OpenDot Backend，或检查桌面应用配置的服务地址：</p><p><code>${safeUrl}</code></p><button id="retry">重试连接</button><script>document.getElementById('retry').addEventListener('click',()=>window.miniclawDesktop?.retry())</script></main></body></html>`;
+</head><body><main><h1>SKUHarbor Backend 未连接</h1><p>请先启动 SKUHarbor Backend，或检查桌面应用配置的服务地址：</p><p><code>${safeUrl}</code></p><button id="retry">重试连接</button><script>document.getElementById('retry').addEventListener('click',()=>window.miniclawDesktop?.retry())</script></main></body></html>`;
 }
 
 async function loadRenderer(): Promise<void> {
@@ -307,9 +307,9 @@ function createApplicationMenu(): void {
   const template: MenuItemConstructorOptions[] = [
     ...(process.platform === 'darwin' ? [{ role: 'appMenu' as const }] : []),
     {
-      label: 'OpenDot',
+      label: 'SKUHarbor',
       submenu: [
-        { label: 'About OpenDot', click: () => void showAbout() },
+        { label: 'About SKUHarbor', click: () => void showAbout() },
         { type: 'separator' },
         { role: 'quit' },
       ],
@@ -319,9 +319,9 @@ function createApplicationMenu(): void {
       label: 'Help',
       submenu: [
         {
-          label: 'OpenDot on GitHub',
+          label: 'SKUHarbor on GitHub',
           click: () =>
-            void openExternalUrl('https://github.com/helsome/OpenDot'),
+            void openExternalUrl('https://github.com/icearia0219/SKUHarbor'),
         },
       ],
     },

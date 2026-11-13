@@ -1,7 +1,7 @@
 {
-  "name": "miniclaw",
+  "name": "skuharbor",
   "version": "1.0.0",
-  "description": "OpenDot: self-hosted personal AI assistant and team powered by Pi Runtime.",
+  "description": "SKUHarbor: an evidence-based ecommerce operations Copilot, built on OpenDot.",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
@@ -108,11 +108,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/helsome/OpenDot.git"
+    "url": "git+https://github.com/icearia0219/SKUHarbor.git"
   },
-  "homepage": "https://github.com/helsome/OpenDot#readme",
+  "homepage": "https://github.com/icearia0219/SKUHarbor#readme",
   "bugs": {
-    "url": "https://github.com/helsome/OpenDot/issues"
+    "url": "https://github.com/icearia0219/SKUHarbor/issues"
   },
   "author": "helson",
   "keywords": [
@@ -127,6 +127,7 @@
     "docker",
     "mcp",
     "electron",
-    "desktop"
+    "desktop",
+    "ecommerce"
   ]
 }

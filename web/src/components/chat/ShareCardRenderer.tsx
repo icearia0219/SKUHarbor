@@ -1,4 +1,4 @@
-import { appIconUrl } from '../../utils/brand';
+import { appIconUrl, APP_NAME, PROJECT_REPOSITORY } from '../../utils/brand';
 import { forwardRef, useMemo } from 'react';
 import { EmojiAvatar } from '../common/EmojiAvatar';
 import { MarkdownRenderer } from './MarkdownRenderer';
@@ -210,11 +210,11 @@ export const ShareCardRenderer = forwardRef<
       >
         <img
           src={appIconUrl}
-          alt="OpenDot"
+          alt="SKUHarbor"
           style={{ width: 16, height: 16, borderRadius: 3 }}
         />
         <span style={{ fontSize: 12, color: '#94a3b8' }}>
-          OpenDot · github.com/helsome/OpenDot
+          {APP_NAME} · github.com/{PROJECT_REPOSITORY}
         </span>
       </div>
     </div>

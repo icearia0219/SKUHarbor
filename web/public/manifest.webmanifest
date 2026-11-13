@@ -1,10 +1,12 @@
 {
-  "name": "OpenDot",
-  "short_name": "OpenDot",
-  "description": "Your personal AI team",
+  "name": "SKUHarbor",
+  "short_name": "SKUHarbor",
+  "description": "Cross-border ecommerce operations Copilot",
   "start_url": "./",
   "display": "standalone",
-  "display_override": ["standalone"],
+  "display_override": [
+    "standalone"
+  ],
   "background_color": "#111318",
   "theme_color": "#111318",
   "lang": "zh-CN",

@@ -42,7 +42,7 @@ export async function startWindows({
     );
   console.log(`Host Bash: ${bash}`);
   console.log(
-    'Starting OpenDot at http://127.0.0.1:' + (env.WEB_PORT || '3000'),
+    'Starting SKUHarbor at http://127.0.0.1:' + (env.WEB_PORT || '3000'),
   );
   return runNode([path.join(root, 'dist', 'index.js')], {
     cwd: root,

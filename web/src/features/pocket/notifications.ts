@@ -130,7 +130,7 @@ export async function notifyPocketIfHidden(
   const now = Date.now();
   if (!test && now - lastNoticeAt < 1000) return;
   lastNoticeAt = now;
-  const title = 'Miniclaw';
+  const title = 'SKUHarbor';
   const options: NotificationOptions = {
     body: test ? '通知已启用。' : body || '有新的会话结果，打开查看。',
     tag: 'miniclaw-pocket-activity',

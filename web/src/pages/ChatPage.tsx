@@ -370,7 +370,7 @@ export function ChatPage() {
             <div className="w-16 h-16 rounded-2xl overflow-hidden mx-auto mb-6">
               <img
                 src={appIconUrl}
-                alt="OpenDot"
+                alt="SKUHarbor"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -388,7 +388,7 @@ export function ChatPage() {
         onClose={closeClear}
         onConfirm={handleClearConfirm}
         title="重建工作区"
-        message={`确认重建工作区「${clearState.name}」吗？这会永久删除全部聊天记录、上下文、所有子对话及其消息、工作目录文件，以及该工作区的全部 Memory（含版本历史、遗忘记录和 OpenDot 称呼偏好）；Home 还会重置首次唤醒状态。关联定时任务会停止并移入回收站，运行历史保留；持久化目录 (data/extra/) 保留。此操作不可撤销。`}
+        message={`确认重建工作区「${clearState.name}」吗？这会永久删除全部聊天记录、上下文、所有子对话及其消息、工作目录文件，以及该工作区的全部 Memory（含版本历史、遗忘记录和 SKUHarbor 称呼偏好）；Home 还会重置首次唤醒状态。关联定时任务会停止并移入回收站，运行历史保留；持久化目录 (data/extra/) 保留。此操作不可撤销。`}
         confirmText="确认重建"
         cancelText="取消"
         confirmVariant="danger"

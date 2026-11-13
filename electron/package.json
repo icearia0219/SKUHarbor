@@ -1,10 +1,18 @@
 {
-  "name": "miniclaw-desktop",
+  "name": "skuharbor-desktop",
   "version": "1.0.0",
   "private": true,
-  "description": "Electron desktop shell for OpenDot.",
+  "description": "Electron desktop shell for SKUHarbor, built on OpenDot.",
   "main": "dist/main.cjs",
   "author": "helson",
   "license": "MIT",
-  "homepage": "https://github.com/helsome/OpenDot#readme"
+  "homepage": "https://github.com/icearia0219/SKUHarbor#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/icearia0219/SKUHarbor.git",
+    "directory": "electron"
+  },
+  "bugs": {
+    "url": "https://github.com/icearia0219/SKUHarbor/issues"
+  }
 }

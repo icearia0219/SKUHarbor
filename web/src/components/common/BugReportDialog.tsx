@@ -13,6 +13,7 @@ import {
   DialogFooter,
 } from '@/components/ui/dialog';
 import { showToast } from '@/utils/toast';
+import { PROJECT_REPOSITORY } from '@/utils/brand';
 
 interface BugReportDialogProps {
   open: boolean;
@@ -390,7 +391,9 @@ export function BugReportDialog({ open, onClose }: BugReportDialogProps) {
               </span>{' '}
               的身份提交 Issue 到
             </p>
-            <p className="text-sm text-muted-foreground">helsome/OpenDot</p>
+            <p className="text-sm text-muted-foreground">
+              {PROJECT_REPOSITORY}
+            </p>
           </div>
         )}
 
@@ -431,7 +434,10 @@ export function BugReportDialog({ open, onClose }: BugReportDialogProps) {
                       key={k}
                       className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded"
                     >
-                      {k === 'Miniclaw版本' ? 'OpenDot版本' : k}: {v}
+                      {['Miniclaw版本', 'OpenDot版本'].includes(k)
+                        ? 'SKUHarbor版本'
+                        : k}
+                      : {v}
                     </span>
                   ))}
                 </div>

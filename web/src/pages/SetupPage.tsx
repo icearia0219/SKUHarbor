@@ -64,13 +64,13 @@ export function SetupPage() {
             <div className="w-16 h-16 rounded-2xl overflow-hidden">
               <img
                 src={appIconUrl}
-                alt="OpenDot"
+                alt="SKUHarbor"
                 className="w-full h-full object-cover"
               />
             </div>
           </div>
           <h1 className="text-2xl font-bold text-foreground mb-1">
-            OpenDot 初始设置
+            SKUHarbor 初始设置
           </h1>
           <p className="text-sm text-muted-foreground">
             先创建管理员账号，完成后进入后台继续配置飞书 Token 与 Claude Key

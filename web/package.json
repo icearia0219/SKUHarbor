@@ -1,5 +1,5 @@
 {
-  "name": "miniclaw-web",
+  "name": "skuharbor-web",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -58,13 +58,13 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/helsome/OpenDot.git",
+    "url": "git+https://github.com/icearia0219/SKUHarbor.git",
     "directory": "web"
   },
-  "homepage": "https://github.com/helsome/OpenDot#readme",
+  "homepage": "https://github.com/icearia0219/SKUHarbor#readme",
   "bugs": {
-    "url": "https://github.com/helsome/OpenDot/issues"
+    "url": "https://github.com/icearia0219/SKUHarbor/issues"
   },
   "author": "helson",
-  "description": "Web and PWA client for OpenDot."
+  "description": "Web and PWA client for SKUHarbor ecommerce operations."
 }

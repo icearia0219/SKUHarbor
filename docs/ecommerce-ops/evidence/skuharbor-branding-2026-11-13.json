@@ -1,0 +1,48 @@
+{
+  "product": "SKUHarbor",
+  "software_version": "1.0.0",
+  "repository": "icearia0219/SKUHarbor",
+  "date": "2026-11-13",
+  "scope": "Rename the existing version, preserve compatibility and provenance, archive the user-supplied next-slice review/plan; no next-slice implementation or new real-model evaluation.",
+  "final_ecommerce_check": {
+    "report": "artifacts/ecommerce-ops/checks/check-1794557051141-bf1f2a48/report.json",
+    "status": "passed",
+    "steps": 16,
+    "failed_steps": 0,
+    "unit": { "files": 12, "passed": 140 },
+    "integration": { "files": 10, "passed": 77 },
+    "browser": { "passed": 3, "seconds": 25.3, "provider": "synthetic" },
+    "documentation_files": 161,
+    "runtime": "Node.js 24.15.0, direct versioned executable"
+  },
+  "targeted_checks": {
+    "frontend_brand_and_identity_contracts": { "files": 3, "passed": 25 },
+    "backend_appearance_compatibility": { "passed": 7 },
+    "windows_tooling": { "passed": 11 },
+    "desktop_typecheck": "passed",
+    "desktop_main_and_preload_build": "passed",
+    "web_typecheck_and_build": "passed",
+    "package_and_lock_consistency": {
+      "packages": 5,
+      "locks": 4,
+      "dependency_graphs_unchanged": true
+    },
+    "frozen_benchmark_and_prompt_files_unchanged": 248,
+    "original_license_unchanged": true
+  },
+  "retained_failure": {
+    "report": "artifacts/ecommerce-ops/checks/check-1794556736330-b60c8bb5/report.json",
+    "result": "Initial integration run: 76 passed, 1 persistence subprocess spawn ENOENT. Exact source of the transient path failure was not established. The focused persistence suite passed 2/2 using a direct versioned Node executable, followed by the full passing check above.",
+    "focused_log": "artifacts/skuharbor-release/persistence-fixed-runtime.log"
+  },
+  "limits": {
+    "real_model_rerun_during_branding": false,
+    "next_listing_slice_implemented": false,
+    "overall_acceptance_A": "not_accepted",
+    "business_trial_B": "not_validated",
+    "business_benefits_C": "not_validated",
+    "prior_legacy_windows_permission_failures": "3 prior failures retained; not claimed resolved by the rename",
+    "screenshot_scope": "Synthetic Provider and synthetic test data; UI/branding evidence, not content quality acceptance",
+    "test_counts": "Different runs and suites may overlap; do not add these counts as independent business samples."
+  }
+}

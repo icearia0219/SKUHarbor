@@ -33,7 +33,11 @@ interface NavItem {
 }
 
 const accountItems: NavItem[] = [
-  { key: 'device-control', label: '电脑与浏览器', icon: <ServerCog className="size-4" /> },
+  {
+    key: 'device-control',
+    label: '电脑与浏览器',
+    icon: <ServerCog className="size-4" />,
+  },
   { key: 'profile', label: '个人资料', icon: <User className="size-4" /> },
   {
     key: 'mem0-private',
@@ -54,7 +58,11 @@ const accountItems: NavItem[] = [
 ];
 
 const systemItems: NavItem[] = [
-  { key: 'observability', label: 'Langfuse 观测', icon: <Gauge className="size-4" /> },
+  {
+    key: 'observability',
+    label: 'Langfuse 观测',
+    icon: <Gauge className="size-4" />,
+  },
   {
     key: 'appearance',
     label: '常规与品牌',
@@ -67,7 +75,7 @@ const systemItems: NavItem[] = [
   },
   {
     key: 'main-agent',
-    label: '主 OpenDot',
+    label: '主 SKUHarbor',
     icon: <Bot className="size-4" />,
   },
   {
@@ -99,7 +107,7 @@ const managementItems: NavItem[] = [
 
 const aboutItem: NavItem = {
   key: 'about',
-  label: '关于 OpenDot',
+  label: '关于 SKUHarbor',
   icon: <Info className="size-4" />,
 };
 
@@ -134,7 +142,11 @@ export function SettingsNav({
 }: SettingsNavProps) {
   const system = systemItems.filter((item) => {
     if (item.key === 'billing') return canManageBilling;
-    if (item.key === 'main-agent' || item.key === 'host-integration' || item.key === 'observability') {
+    if (
+      item.key === 'main-agent' ||
+      item.key === 'host-integration' ||
+      item.key === 'observability'
+    ) {
       return isAdmin;
     }
     return canManageSystemConfig;

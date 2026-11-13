@@ -117,7 +117,7 @@ async function generateIcons() {
     .toFile(appleTouchIconPath);
   console.log(`✓ Generated ${appleTouchIconPath}`);
 
-  console.log('\n✅ All Miniclaw icons generated successfully!');
+  console.log('\n✅ All SKUHarbor icons generated successfully!');
 }
 
 generateIcons().catch((error) => {

@@ -73,8 +73,7 @@ export function AppearanceSection() {
   return (
     <div className="space-y-4">
       <p className="text-sm text-muted-foreground bg-muted rounded-lg px-4 py-3">
-        系统品牌只影响站点标题和欢迎文案，不会改变 OpenDot 或自定义智能体
-        的名称。
+        站点品牌只影响应用名称、站点标题和欢迎文案，不会修改已有智能体的昵称。
       </p>
 
       <Section
@@ -95,7 +94,7 @@ export function AppearanceSection() {
             value={appName}
             onChange={(e) => setAppName(e.target.value)}
             maxLength={32}
-            placeholder="OpenDot"
+            placeholder="SKUHarbor"
           />
         </div>
       </Section>

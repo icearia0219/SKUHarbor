@@ -1,8 +1,8 @@
 {
-  "name": "miniclaw-agent-runner",
+  "name": "skuharbor-agent-runner",
   "version": "1.0.0",
   "type": "module",
-  "description": "Pi agent runner for OpenDot (host and container).",
+  "description": "Pi agent runner for SKUHarbor, inherited from OpenDot (host and container).",
   "main": "dist/pi-index.js",
   "scripts": {
     "build": "tsc",
@@ -27,17 +27,18 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/helsome/OpenDot.git",
+    "url": "git+https://github.com/icearia0219/SKUHarbor.git",
     "directory": "container/agent-runner"
   },
-  "homepage": "https://github.com/helsome/OpenDot#readme",
+  "homepage": "https://github.com/icearia0219/SKUHarbor#readme",
   "bugs": {
-    "url": "https://github.com/helsome/OpenDot/issues"
+    "url": "https://github.com/icearia0219/SKUHarbor/issues"
   },
   "author": "helson",
   "keywords": [
     "agent-runner",
     "mcp",
-    "miniclaw"
+    "skuharbor",
+    "ecommerce"
   ]
 }

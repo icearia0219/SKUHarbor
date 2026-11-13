@@ -2866,7 +2866,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
         if (typeof document === 'undefined' || !document.hidden) {
           showToast(`${desc} ${status}`, event.taskSummary);
         }
-        notifyIfHidden(`Miniclaw: ${desc} ${status}`, event.taskSummary);
+        notifyIfHidden(`SKUHarbor: ${desc} ${status}`, event.taskSummary);
       }
 
       set((s) => {

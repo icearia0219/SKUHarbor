@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { resolve } from 'node:path';
 import { expect, test } from 'vitest';
+import { productAppName } from '../web/src/utils/brand';
 
 // Sharp belongs to the existing Web workspace; no additional dependency.
 const sharp = createRequire(new URL('../web/package.json', import.meta.url))(
@@ -17,6 +18,28 @@ async function pixels(input: Buffer, size: number, flatten = false) {
   if (flatten) image = image.flatten({ background: '#0b1020' });
   return digest(await image.ensureAlpha().raw().toBuffer());
 }
+
+test('site branding upgrades reserved legacy names and preserves custom site names', () => {
+  for (const name of [undefined, null, '', 'OpenDot', 'Miniclaw', 'MiniClaw'])
+    expect(productAppName(name)).toBe('SKUHarbor');
+  expect(productAppName('我的运营工作室')).toBe('我的运营工作室');
+  expect(productAppName('OpenDot Labs')).toBe('OpenDot Labs');
+});
+
+test('browser and installed PWA expose the same product while keeping installation identity', () => {
+  const manifest = JSON.parse(
+    readFileSync(resolve(root, 'web/public/manifest.webmanifest'), 'utf8'),
+  );
+  expect(manifest.name).toBe('SKUHarbor');
+  expect(manifest.short_name).toBe('SKUHarbor');
+  expect(manifest.id).toBe('./');
+  expect(manifest.start_url).toBe('./');
+  const html = readFileSync(resolve(root, 'web/index.html'), 'utf8');
+  expect(html).toContain('<title>SKUHarbor</title>');
+  expect(html).toContain(
+    'name="apple-mobile-web-app-title" content="SKUHarbor"',
+  );
+});
 
 test('all committed Web/PWA/Electron PNGs are current raster exports of the approved SVG', async () => {
   const outputs: [string, number, boolean?][] = [

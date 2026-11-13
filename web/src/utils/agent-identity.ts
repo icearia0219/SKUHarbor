@@ -1,5 +1,5 @@
 import { appIconUrl } from './brand';
-const DEFAULT_AGENT_NAME = 'Miniclaw';
+const DEFAULT_AGENT_NAME = 'SKUHarbor';
 
 export interface AgentDisplayIdentity {
   name: string;
@@ -22,7 +22,7 @@ export interface AgentIdentityOptions {
 
 /**
  * Resolve a chat identity from the active Agent. A custom Agent only replaces
- * the global Miniclaw avatar when it owns at least one avatar field.
+ * the global SKUHarbor avatar when it owns at least one avatar field.
  */
 export function resolveAgentDisplayIdentity({
   agentName,

@@ -29,7 +29,9 @@ export async function setupWindows({
   console.log('Building Backend, Web Client and Agent Runner...');
   const code = await runNode([npmCli, 'run', 'build:all'], { cwd: root, env });
   if (code !== 0) throw new Error(`build:all failed (exit ${code}).`);
-  console.log('Setup complete. Start OpenDot with npm.cmd run start:windows.');
+  console.log(
+    'Setup complete. Start SKUHarbor with npm.cmd run start:windows.',
+  );
 }
 
 if (isMainModule(import.meta.url)) {

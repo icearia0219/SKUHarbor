@@ -1,358 +1,97 @@
-# OpenDot
+# SKUHarbor
 
-<p align="center">
-  <img src="web/public/icons/logo-1024.png" alt="OpenDot application logo" width="96" />
-</p>
+**跨境电商运营 Copilot：从商品事实、规则证据到人工审核交付。**
 
-<p align="center">
-  <strong>可以直接对话、持续接受委托的个人 AI 助手与团队</strong><br />
-  把工作交给你的 Dot，随时查看进展、处理授权，在自己的设备间继续。
-</p>
+SKUHarbor 基于 [OpenDot](https://github.com/helsome/OpenDot) 二次开发，复用其账号、工作区、模型配置、Web/PWA、桌面外壳及通用 Agent 能力，新增 Amazon US / DE 的电商领域工作台。当前是本地可运行的业务流程初版（PoC），不是已通过真实业务验收的自动运营系统。
 
-<p align="center">
-  <a href="https://github.com/helsome/OpenDot">GitHub</a> ·
-  <a href="DESIGN.md">设计规范</a> ·
-  <a href="docs/API.md">API</a> ·
-  <a href="docs/ACL-MATRIX.md">权限模型</a> ·
-  <a href="SECURITY.md">安全策略</a>
-</p>
+产品名为 **SKUHarbor**，npm 主包名为 `skuharbor`，当前语义版本为 `1.0.0`。旧 `MINICLAW_*` 环境变量、数据目录、MCP 名称和桌面 profile 标识保留兼容；已有自定义站点名、Agent 昵称不会被改名覆盖。
 
-## 产品定位
+## 当前能力
 
-OpenDot 面向个人与团队，复用 Pi Agent Runtime、已有 Goal、群聊、工具授权和记忆边界。
-Dot 是用户可命名的个人助手；默认协调员通过稳定身份识别，不会被界面强制改名为 Chief。
-产品优先呈现对话、工作进展和需要处理的授权；Workspace、Runtime 与执行详情保留在高级入口。
+登录后进入 **电商运营**，路径为 `/ecommerce-ops`，选择可访问的工作区。
 
-- 对话入口读取已有授权会话，打开页面或重新连接不会自动提交任务。
-- 群聊使用明确提及和受控委派，显示服务端任务、审批与结果。
-- 工作页集中查看目标、进展和待处理事项。
-- Web/PWA/Electron 共用业务前端；手机活动会话保留聊天与输入区，详情按需打开 Sheet。
-- 本地文件、命令和设备仍受原有 Workspace、Host Policy、Capability 与审批约束。
+| 页面 | 能做什么                                                      |
+| ---- | ------------------------------------------------------------- |
+| 产品 | 导入来源，建立 US/DE SKU，人工确认事实，发现冲突并保留证据    |
+| 知识 | 管理站点/产品适用范围、来源、版本、生效与已知时间             |
+| 任务 | 创建候选研究、Listing、广告文案、SP 报表诊断和客服草稿任务    |
+| 审核 | 查看证据、改稿、审核精确版本、导出 JSON/Markdown/广告诊断 CSV |
 
-底层执行与交付的验收边界见 [评估记录](docs/personal-agent/evaluation.md) 和
-[云端验收](docs/personal-agent/cloudflare-real-acceptance.md)。界面图片不证明真实云端部署或模型能力。
+任务复用已确认事实与适用规则；广告金额和比例由代码计算；输入或规则变化会令旧稿与审核失效。支持补料恢复、幂等请求、检查点与暂停/取消。所有读取、修改和导出受工作区授权控制。
 
-## 界面与体验
+以下截图来自改名后的隔离浏览器测试，仅展示品牌、桌面/手机布局和审核流程；内容由 synthetic Provider 生成，不代表真实模型已能交付可用 Listing。
 
-[DESIGN.md](DESIGN.md) 是 Web、PWA 和 Electron 的设计真相源：一个对话栏、一个聊天画布、
-底部输入区，以及按需展开的工作、审批与上下文。明暗主题共用品牌蓝、字体层级和组件 Token。
+<img src="docs/ecommerce-ops/evidence/workbench-us-synthetic.png" alt="SKUHarbor 桌面审核视图，合成测试资料" width="900" />
+<img src="docs/ecommerce-ops/evidence/workbench-de-synthetic.png" alt="SKUHarbor 手机审核视图，合成测试资料" width="260" />
 
-<p align="center">
-  <img src="docs/frontend-redesign/opendot/desktop-dark-opendot.png" alt="OpenDot desktop conversation in dark mode" width="900" />
-</p>
+P0 采用授权文件导入，模型只生成草稿与解释。Listing、广告和客服按单 SKU/站点绑定；SP-API / Ads API 尚未接入，没有上架、改价、改预算、退款、补发或发送客服消息的场景端点。人工 Goal 跟进需要原功能开关并手动推进。
 
-<p align="center">
-  <img src="docs/frontend-redesign/opendot/mobile-light-opendot.png" alt="OpenDot mobile conversation in light mode" width="260" />
-  <img src="docs/frontend-redesign/opendot/mobile-dark-approval.png" alt="OpenDot mobile approval sheet" width="260" />
-</p>
+## 实际进度与限制
 
-图片来自隔离 HTTP/SQLite 测试环境；任务推理、触屏与键盘为模拟。完整桌面/手机、明暗主题、
-群聊、目标、审批与设置图片及回归证据见 [设计落地记录](docs/frontend-redesign/opendot-design-system.md)。
+- 历史完整场景检查通过：140 项单元、77 项集成、3 项浏览器测试；故障编号 B01–B24 为 24/24。浏览器使用合成 Provider，测试集合有重叠，不能当作独立真实业务样本相加。
+- 真实模型同输入对照：通用提示 A25/60，SOP B21/60，内容质量未达标。这些通过分数包含正确补料；两组 Listing 均 **0/15 进入待审**，不能宣传为已生成 10/6 份可用 Listing。
+- 原相关回归保留 3 项 Windows 权限/mode 失败；整体工程/演示验收 A 尚未通过，真实业务试运行 B 与经营收益 C 未验证。模型评测变体 A/B/C 与验收等级 A/B/C 是两套命名。
+- 原聊天仍是默认首页，普通聊天尚未接电商任务调度；手机聊天入口和首个任务引导是已知体验缺口。当前需要自行进入工作台并导入资料。
+- PDF 依赖 `pdftotext`，本机真实二进制提取尚未验证。费用无可靠价格版本时记为 unknown。
 
-## 品牌与兼容性
+完整证据与边界见 [验收记录](docs/ecommerce-ops/acceptance.md)、[项目阶段汇报](docs/ecommerce-ops/REPORT_TO_WEB_CHATGPT.md)；GitHub 读者可下载 [脱敏阶段证据包](docs/ecommerce-ops/evidence/README.md)，历史 `artifacts/` 路径只用于本机定位。下一轮单 SKU Listing 目标见 [评审与计划归档](docs/ecommerce-ops/next-slice/README.md)，**尚未实施**。
 
-项目和应用品牌为 OpenDot，沿用已选定的白色机器人应用标识。每个 Dot 的头像和名称独立于应用品牌，
-已有个性化名称与历史名称不会自动覆写，可在 Dot 详情的设置中修改。
+## Windows 启动
 
-兼容标识继续保留：`MINICLAW_*` 环境变量、`miniclaw` 包/工具名称、现有数据库与 API、
-Cookie/存储键、Docker 镜像标签和 Electron `cc.miniclaw.desktop`。桌面数据继续使用原有目录，
-不因显示名称变化而创建空白用户配置。旧部署不需要因本次视觉修改进行数据迁移。
-详细范围见 [品牌与仓库兼容说明](docs/opendot-brand-compatibility.md)。
-
-## 核心功能
-
-### Agent 与 Workspace
-
-- 用 Agent Profile 保存身份、模型、思考级别、Skills、MCP 与执行策略。
-- 每个 Workspace 拥有独立的文件、Session、Memory、渠道绑定和执行边界。
-- Home Workspace 与自定义 Agent 分层管理，支持创建、重命名、重建、清空和删除。
-- 支持 Host 与 Docker 两种执行方式；需要隔离的任务可以在 Agent Runner 容器中运行。
-
-### Pi Agent Runtime
-
-- 基于 Pi Agent Runtime 提供 prompt、流式输出、工具调用、Session 持久化与恢复。
-- 支持 abort、follow-up、原生 compaction 和持久化 JSONL Session。
-- 复用 OpenDot 已有的 MCP capability handler，并映射为稳定的 `mcp__miniclaw__*` 工具。
-- Subagents 通过 Pi extension 与显式的 spawn/stop 生命周期桥接。
-- Runtime 不会静默假装拥有缺失能力；尚未接入 Pi 的 Web Search/Web Fetch 能力会保持明确不可用。
-
-### Memory 与上下文
-
-- Memory 按 Workspace 隔离，不在不同工作区之间隐式共享。
-- 支持事实、偏好、决策和经验等知识类型，以及搜索、编辑、忘记和版本历史。
-- 写入使用 revision 与 compare-and-set，避免并发编辑覆盖彼此的修改。
-- 每条 Memory 可记录来源 Session、来源类型、观察时间和变更历史，便于回溯 provenance。
-- Runtime 只注入当前 Workspace 允许使用的记忆，不把平台身份约束当作普通用户记忆。
-
-### Skills、MCP 与 Plugins
-
-- 内置、宿主机、项目、用户、Workspace 和 Plugin 层级的 Skills 统一解析。
-- 能力库集中展示 Skills、MCP 与 Plugins 的可用状态、依赖和能力预览。
-- Plugin Catalog 支持扫描、导入、版本快照和用户启用配置。
-- Agent 运行前会计算有效能力 Manifest，并把 Skills、MCP、Memory、Workspace 与渠道上下文按策略注入。
-- 路径穿越、符号链接逃逸、越权 Workspace 与未授权 capability 会在边界层拒绝。
-
-### 渠道与自动化
-
-- 支持将消息渠道绑定到指定 Workspace 或 Session，并按用户、群聊、话题和 owner 规则进行 ACL 判断。
-- 支持飞书、Telegram、QQ、钉钉、微信、Discord、WhatsApp 等消息入口。
-- Scheduler 支持 Cron、固定间隔和一次性任务，提供立即运行、暂停、取消、运行历史和结果投递。
-- 后台任务、Subagent 和渠道回复都沿用同一套 Workspace、Session、owner 与权限上下文。
-
-### Electron Desktop
-
-- Electron 只是 Desktop Shell，复用现有 Web Client，不在 Renderer 中承载数据库、文件系统、凭证、Docker 或 shell/process 权限。
-- Main Process 负责窗口生命周期、外部链接、菜单和受限 IPC；Preload 只暴露白名单 API。
-- 默认提供 macOS arm64 打包配置，并保留 Windows、Linux 目标配置。
-- 同一套 Renderer 可以连接本地 Backend，也可以通过 `MINICLAW_SERVER_URL` 连接远程 OpenDot 服务。
-
-## 工作原理
-
-```text
-Web Client / Electron Desktop / Message Channels
-                         │ HTTP + WebSocket / Channel Adapters
-                         ▼
-                OpenDot Backend
-        Auth · API · Queue · Scheduler · ACL
-                         │
-        ┌────────────────┼─────────────────┐
-        ▼                ▼                 ▼
-   Workspace         Capability         Channel
-   Session           Registry            Binding
-   Memory            Skills/MCP          Delivery
-                         │
-                         ▼
-                 Pi Agent Runner
-                   Host / Docker
-                         │
-                         ▼
-                Pi Agent Runtime
-          Tools · Extensions · Subagents
-```
-
-核心边界保持清晰：Backend 负责认证、持久化、队列、调度、渠道和授权；Pi Runner 负责 Agent 执行；Workspace 决定文件与运行边界；Electron Renderer 只负责界面和受限的桌面桥接。
-
-## 快速开始
-
-### 环境要求
-
-- Node.js 22.19 或更高版本（推荐 Node.js 24 LTS；Pi Durable 存储需要内置 SQLite）
-- npm
-- Windows Host 模式需要 [Git for Windows](https://gitforwindows.org/) 提供 Bash；安装与启动使用 npm，无需 GNU Make
-- macOS/Linux 的 `make` 工作流需要 GNU Make
-- 如果使用容器执行模式，需要 Docker
-
-### Windows（PowerShell）
-
-在克隆或解压后的项目根目录运行：
+使用 **Node.js 24**；安装依赖和启动应使用同一 Node 大版本。当前本机依赖为 Node 24.15.0 / ABI 137，使用 Node 22 / ABI 127 会导致 `better-sqlite3` 原生模块加载失败。已有安装先备份自己的 `data/`，不要删除业务数据解决版本问题。
 
 ```powershell
+git clone https://github.com/icearia0219/SKUHarbor.git
+cd SKUHarbor
+node --version
 npm.cmd run setup:windows
-npm.cmd run start:windows
-```
-
-安装入口按 lockfile 安装 Backend、Web 和 Agent Runner，然后构建三个项目。启动入口检查依赖和构建产物，并从 Git 安装位置发现 Bash。Git 装在自定义目录时也可以显式设置：
-
-```powershell
-$env:MINICLAW_HOST_BASH_PATH = 'D:\git\Git\bin\bash.exe'
-npm.cmd run start:windows
-```
-
-打开 <http://127.0.0.1:3000> 完成初始化。此路径面向基础 Web、Host Agent 和脚本任务；Device 私有状态等依赖 POSIX 权限的功能仍有平台限制。安装原生模块、可选工具、开发模式与验证命令见 [Windows 安装说明](docs/windows.md)。
-
-### 启动 Backend 与 Web Client
-
-```bash
-git clone https://github.com/helsome/OpenDot.git
-cd OpenDot
-
-npm ci
-npm --prefix web ci
-npm --prefix container/agent-runner ci
-
-# 首次安装或依赖更新后构建 Backend、Web 与 Agent Runner
-npm run build:all
-
-# 启动生产式本地服务
-npm start
-```
-
-默认地址：<http://127.0.0.1:3000>
-
-开发模式可以直接启动 Backend 和 Vite Web Client：
-
-```bash
-npm run dev:all
-```
-
-首次进入时完成管理员初始化和 Provider 配置即可。Provider/渠道接入步骤现在可以选择“稍后设置”，跳过后仍可进入工作台，之后在设置中补齐模型和渠道配置。
-
-Agent 容器镜像默认使用 `helsome/miniclaw-agent:latest`，可以通过 `MINICLAW_CONTAINER_IMAGE` 或 `CONTAINER_IMAGE` 覆盖。
-
-容器模式要求 Docker 可用且镜像已安装。`make start` / `make dev` 优先使用本地已有镜像；缺失时拉取远程镜像。若出现 `pull access denied`，先确认镜像确实已发布、当前账号有读取权限，或配置可访问的镜像地址。管理员也可以在仓库根目录执行 `docker build --pull -t helsome/miniclaw-agent:latest container` 从当前源码构建。服务启动与镜像构建必须连接同一个 Docker daemon；使用独立 Docker 环境时，给服务和构建命令设置相同的 `DOCKER_HOST`。需要使用本机已有 HTTP(S) 代理时，可通过 `MINICLAW_CONTAINER_PROXY` 指定容器能访问的代理地址；容器里的 `127.0.0.1` 指向容器本身。该默认值只作用于 Container Runner，显式的 Provider / 工作区代理配置优先。
-
-第三方 OpenAI Completions 接口需在 Provider 的自定义环境变量中设置 `MINICLAW_MODEL_API=openai-completions`；默认协议为 `anthropic-messages`。该设置同时用于普通 Dot 对话的 Host / Container Runner。生产容器使用镜像内配套的源码和 Prompt；仅开发时可显式设置 `MINICLAW_CONTAINER_LIVE_SOURCE=true` 挂载本机源码，修改正式 Runner 后应重新构建镜像。
-
-原生群聊由 `MINICLAW_BOT_GROUPS=true` 启用；需要 Bot 执行协作时另设 `MINICLAW_BOT_HANDOFFS=true`。创建入口位于「Dot 和对话 → ＋新建群聊」。Bot 执行仍需群聊管理员在设置中明确授予运行权限与调用预算。
-
-### 启动 Electron Desktop
-
-先启动 Backend 与 Vite：
-
-```bash
-npm run dev:all
-```
-
-再在另一个终端启动桌面端：
-
-```bash
-MINICLAW_RENDERER_URL=http://127.0.0.1:5173 npm run desktop:dev
-```
-
-如果直接使用 Backend 提供的构建后页面，可以省略 `MINICLAW_RENDERER_URL`：
-
-```bash
-npm run desktop:dev
-```
-
-连接远程 Backend 时：
-
-```bash
-MINICLAW_SERVER_URL=https://your-miniclaw.example.com npm run desktop:dev
-```
-
-打包命令：
-
-```bash
-# 生成未安装目录，适合本地冒烟验证
-npm run desktop:package:dir
-
-# 生成当前平台的安装包
-npm run desktop:package
-```
-
-打包配置位于 [`electron/electron-builder.yml`](electron/electron-builder.yml)，图标资源位于 [`electron/assets`](electron/assets)。正式发布前请为目标平台配置签名与公证。
-
-## 常用命令
-
-| 命令                           | 说明                                                 |
-| ------------------------------ | ---------------------------------------------------- |
-| `npm run setup:windows`        | 使用独立缓存安装三层锁定依赖并构建 Windows 本地服务  |
-| `npm run start:windows`        | 检查构建产物、选择 Git Bash 并启动 Windows 本地服务  |
-| `npm run test:windows-tooling` | 验证 Windows 安装/启动入口和开发工具                 |
-| `npm run dev:all`              | 启动 Backend 与 Vite Web Client                      |
-| `npm run build:all`            | 构建 Backend、Web Client 与 Agent Runner             |
-| `npm run typecheck`            | 检查 Backend TypeScript                              |
-| `make typecheck`               | 执行 Backend、Web、Agent Runner 的完整类型与文档检查 |
-| `npm test -- --run`            | 运行 Vitest 测试                                     |
-| `npm run desktop:typecheck`    | 检查 Electron Main/Preload 类型                      |
-| `npm run desktop:build`        | 构建 Electron Main/Preload bundle                    |
-| `npm run desktop:package:dir`  | 构建并生成目录形式的桌面应用                         |
-| `npm run desktop:package`      | 构建并打包桌面应用                                   |
-| `make backup`                  | 创建运行时数据备份                                   |
-| `make restore FILE=...`        | 恢复指定备份                                         |
-| `make status`                  | 查看 Backend、日志和 Docker 状态                     |
-| `make stop`                    | 停止当前端口上的 OpenDot 服务                        |
-
-## 配置入口
-
-| 环境变量                   | 用途                                                | 默认值                          |
-| -------------------------- | --------------------------------------------------- | ------------------------------- |
-| `MINICLAW_SERVER_URL`      | Electron 要连接的 Backend 地址                      | `http://127.0.0.1:3000`         |
-| `MINICLAW_RENDERER_URL`    | Electron 要加载的 Renderer 地址，适合本地 Vite 开发 | 与 Server URL 相同              |
-| `MINICLAW_CONTAINER_IMAGE` | Agent Runner 使用的容器镜像                         | `helsome/miniclaw-agent:latest` |
-| `CONTAINER_IMAGE`          | 容器镜像的兼容覆盖项                                | 同上                            |
-| `WEB_PORT`                 | Makefile 启动 Backend 使用的端口                    | `3000`                          |
-| `MINICLAW_DEMO_OPEN`       | 回环地址免登录演示模式，详见 [`DEMO.md`](DEMO.md)   | 关闭                            |
-| `PROVIDER_SETUP_SKIPPED`   | 没有系统设置文件时跳过 Provider 引导                | 关闭                            |
-
-不要把 API Key、Session Cookie 或其他凭证写入命令行历史、截图或提交到仓库。远程部署时使用 HTTPS/WSS，并为反向代理、Cookie 和访问控制配置独立的安全边界。
-
-## 执行与安全边界
-
-- Backend 由 Node.js 运行，负责认证、API、WebSocket、队列、调度、渠道连接、Provider、用量和 SQLite 持久化。
-- Docker 只隔离 Agent 执行环境，不承载 Desktop UI，也不替代 Backend 的授权层。
-- Electron BrowserWindow 使用 `contextIsolation`、关闭 `nodeIntegration` 和 sandbox。
-- Renderer 不直接读取文件、数据库或凭据；需要本机能力时只通过受限 Preload IPC 调用。
-- 外部链接由 Main Process 校验协议后打开；Renderer 导航限制在允许的 Backend/Renderer origin 内。
-- Workspace ACL、owner、用户角色、系统权限和 Host 执行策略在服务端共同判定，不能因为拥有某一层权限就自动越过其他边界。
-- Memory、Skills、MCP、Plugins 和 Scheduler 任务都继承用户、Agent、Workspace 与 Session 上下文。
-
-更多权限约束见 [`docs/ACL-MATRIX.md`](docs/ACL-MATRIX.md)，安全问题请参考 [`SECURITY.md`](SECURITY.md)。
-
-## 项目状态
-
-OpenDot 当前处于持续开发阶段。仓库已经包含：
-
-- Pi Agent Runtime 生产执行路径与 runtime-neutral contract。
-- Web Client 与 Electron Desktop Shell。
-- Agent Profile、Workspace、Session、Memory、Skills、MCP、Plugins 和 Subagents。
-- 多用户认证、ACL、owner 生命周期、调度任务、用量和渠道接入。
-- Host/Docker 双执行边界，以及 macOS arm64 的 Electron 打包配置。
-
-真实模型调用、Docker 执行、渠道连接和远程部署仍然依赖本地凭证、服务配置与运行环境；没有外部 Provider 时，可以先启动 UI、完成本地初始化，并在设置中稍后补齐配置。
-
-## 路线图
-
-### 近期
-
-- 补充 Pi Runtime 的 Web Search/Web Fetch 等能力适配。
-- 完善渠道 onboarding、运行监控和失败恢复提示。
-- 增加更多 Electron 打包、签名和发布验证路径。
-- 持续收敛 Workspace、Memory、Skills 与 Scheduler 的产品文档。
-
-### 长期
-
-- 更完整的跨平台桌面构建。
-- 更丰富的 Agent/Plugin/Provider 扩展模型。
-- 可视化的运行轨迹、证据链与成本分析。
-- 面向贡献者的能力注册、Skill 开发和渠道适配指南。
-
-## 文档
-
-- [`docs/API.md`](docs/API.md) — HTTP API、认证和主要资源接口
-- [`docs/ACL-MATRIX.md`](docs/ACL-MATRIX.md) — 用户、Workspace、Channel、Host 与任务权限矩阵
-- [`docs/workspace-memory-v2.md`](docs/workspace-memory-v2.md) — Workspace Memory 的数据模型、版本与交互边界
-- [`docs/runtime-migration.md`](docs/runtime-migration.md) — 从旧运行时到 Pi Agent Runtime 的迁移记录
-- [`docs/personal-agent/architecture.md`](docs/personal-agent/architecture.md) — Personal Agent 架构现状与迁移边界
-- [`docs/personal-agent/goals-and-tasks.md`](docs/personal-agent/goals-and-tasks.md) — 可选 Goal 任务入口、现有 Scheduler 集成与运行预算（`MINICLAW_PERSONAL_GOALS=true`）
-- [`docs/personal-agent/evaluation.md`](docs/personal-agent/evaluation.md) — 可复现的验证证据与未验证事项
-- [`docs/PROMPT-SKILL-RUNTIME-TEST-PLAN.md`](docs/PROMPT-SKILL-RUNTIME-TEST-PLAN.md) — Prompt、Skill、Runtime 与 Agent Builder 验证计划
-- [`docs/miniclaw-migration-cleanup.md`](docs/miniclaw-migration-cleanup.md) — 品牌和运行时命名迁移记录
-- [`SECURITY.md`](SECURITY.md) — 安全问题报告与处理策略
-
-## 参与贡献
-
-欢迎提交 Issue 与 Pull Request。提交前建议运行：
-
-```bash
-make typecheck
-npm test -- --run
-npm run build:all
-npm run desktop:typecheck
-npm run desktop:build
-```
-
-如果改动了 UI、桌面窗口或交互流程，请附上截图或简短的视觉 QA 说明。新增桌面能力优先放在 Main/Preload，并保持 Renderer 不接触 SQLite、filesystem、credentials、Docker 和 shell/process。
-
-## License
-
-OpenDot 使用 MIT License，详见 [`LICENSE`](LICENSE)。
-
-## 电商运营 P0（可选）
-
-新增中文工作台 `/ecommerce-ops`，支持 Amazon US / DE 的候选资料比较、Listing、三组广告内容、导入 SP 报表只读诊断及客服草稿。共享已确认 SKU 事实、适用规则和可定位证据；人工修改/审核绑定确切版本，导出 JSON/Markdown，广告指标另有 CSV。默认 `OPENDOT_ECOMMERCE_OPS=false`，开启后登录并选择自己的现有工作区；沿用同一 OpenDot 服务。需要人工 Goal 跟进时另启用既有 `MINICLAW_PERSONAL_GOALS=true`，其预算为一次、需手动推进。
-
-所有内容为待审内部草稿；不执行平台上架、改价/竞价/预算、退款、补发或发送客服消息。P0 采用授权文件导入，SP-API / Ads API 为 P1 未接入。US/DE 使用各自 SKU、规格与规则；人工审核订单导入不等于平台回执。CSV/JSON/DOCX 已做工程验证，PDF 需 pdftotext，本机实际 PDF 二进制尚未验证。
-
-在项目根目录 PowerShell 开启：
-
-```powershell
-npm run build:all
 $env:OPENDOT_ECOMMERCE_OPS='true'
-npm run start:windows
+npm.cmd run start:windows
 ```
 
-验证入口为 `node scripts/ecommerce-check.mjs all`；演示为 `node scripts/ecommerce-demo.mjs --workspace demo-ecommerce --reset --scenario launch-us-de`。reset 仅允许标记的 demo workspace；真实数据/已有服务不作为测试环境。
+需要 Git for Windows Bash；启动脚本会自动查找。新安装按照应用引导创建管理员、配置自己的模型 Provider 和工作区；密钥只保存在本机配置，不提交 Git。当前仓库为私有仓库，克隆需要对应 GitHub 访问权限。
 
-安装、模型数据流、备份/恢复与关闭开关见 [部署说明](docs/ecommerce-ops/deployment.md)；操作见 [SOP](docs/ecommerce-ops/sop.md) 与 [培训](docs/ecommerce-ops/training.md)；实现见 [仓库映射](docs/ecommerce-ops/repo-map.md)；实际测试/失败、benchmark、真实模型与逐模块 A/B/C 状态见 [验收记录](docs/ecommerce-ops/acceptance.md)。目前整体 A/B/C 尚未全部验收，fixture smoke 不代表真实业务效果。
+打开 `http://127.0.0.1:3000`，登录后进入 `http://127.0.0.1:3000/ecommerce-ops`。场景开关默认关闭；设置环境变量后重新启动服务才生效。已有终端可直接使用启动命令，不必重复安装依赖。普通 `npm run build:all` 只构建代码，不会为不同 Node ABI 重编原生依赖。
+
+详细安装、Node 路径、持久化备份与回退见 [部署说明](docs/ecommerce-ops/deployment.md)。原通用聊天、渠道、Host/Docker 与桌面启动说明保留在 [OpenDot 上游 README 档案](README_OPENDOT_UPSTREAM.md)。
+
+## 测试与演示
+
+在项目根目录执行；工程测试使用自己的临时数据库和服务，不重置用户业务工作区。all 包含构建，会更新 dist，建议在开发副本运行。
+
+```powershell
+node scripts/ecommerce-check.mjs unit
+node scripts/ecommerce-check.mjs integration
+node scripts/ecommerce-check.mjs e2e
+node scripts/ecommerce-check.mjs all
+```
+
+三条合成演示使用真实领域函数和 SQLite，模型与审核身份为明确标记的 fixture，不代表真实模型/真人验收，也不会向正式 UI 灌演示数据：
+
+```powershell
+node scripts/ecommerce-demo.mjs --workspace demo-launch-us-de --reset --scenario launch-us-de
+node scripts/ecommerce-demo.mjs --workspace demo-conflicting-evidence --reset --scenario conflicting-evidence
+node scripts/ecommerce-demo.mjs --workspace demo-operations-boundaries --reset --scenario operations-boundaries
+```
+
+reset 只允许受限目录下有 marker 的 demo 工作区。报告、SQLite 和导出保留在本地 `artifacts/`；该目录以及用户 `data/`、配置密钥、日志、依赖和构建产物不上传 Git。当前 GitHub workflows 沿用手动触发方式，上传成功不代表 GitHub CI 已执行。
+
+## 技术栈与目录
+
+React 19 / TypeScript / Vite / Tailwind / Zustand；Node / Hono / Zod；better-sqlite3 / SQLite；JSON Schema 2020-12 / AJV；既有 Pi/Provider 模型 SDK；Vitest / Playwright。
+
+| 目录                                | 职责                                                       |
+| ----------------------------------- | ---------------------------------------------------------- |
+| `src/ecommerce-ops/`                | 事实、知识、报表计算、模型适配、工作流、质检与审核导出     |
+| `src/routes/ecommerce-ops.ts`       | 对接现有认证、工作区权限与人工 Goal                        |
+| `web/src/components/ecommerce-ops/` | 产品、知识、任务及审核视图                                 |
+| `docs/ecommerce-ops/`               | 需求、方案、契约、模板、培训与验收                         |
+| `benchmarks/ecommerce-ops/`         | 合成数据、隔离被测执行与私有评分输入；金标不提供给被测模型 |
+
+真实路径与符号见 [repo-map](docs/ecommerce-ops/repo-map.md)，日常操作见 [培训说明](docs/ecommerce-ops/training.md)。
+
+## 来源与许可证
+
+SKUHarbor 是基于 [helsome/OpenDot](https://github.com/helsome/OpenDot) 的电商场景二次开发，不将原有通用平台能力声明为本项目从零开发。原版权声明和 [MIT LICENSE](LICENSE) 保持不变；第三方依赖、资料和服务有各自许可与条款。
+
+历史评测、上游文档、兼容协议和旧标识中的 OpenDot/Miniclaw 名称作为来源及版本记录保留，不表示当前产品品牌仍为旧名。

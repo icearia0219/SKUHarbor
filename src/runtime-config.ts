@@ -3416,8 +3416,11 @@ export interface AppearanceConfig {
   aiAvatarMode: 'brand' | 'emoji';
 }
 
+const productBrandName = (name: string): string =>
+  ['OpenDot', 'Miniclaw', 'MiniClaw'].includes(name) ? 'SKUHarbor' : name;
+
 const DEFAULT_APPEARANCE_CONFIG: AppearanceConfig = {
-  appName: ASSISTANT_NAME,
+  appName: productBrandName(ASSISTANT_NAME),
   aiName: ASSISTANT_NAME,
   aiAvatarEmoji: '\u{1F431}',
   aiAvatarColor: '#0d9488',
@@ -3436,7 +3439,7 @@ export function getAppearanceConfig(): AppearanceConfig {
     return {
       appName:
         typeof raw.appName === 'string' && raw.appName
-          ? raw.appName
+          ? productBrandName(raw.appName)
           : DEFAULT_APPEARANCE_CONFIG.appName,
       aiName:
         typeof raw.aiName === 'string' && raw.aiName
@@ -3470,7 +3473,7 @@ export function saveAppearanceConfig(
 ): AppearanceConfig {
   const existing = getAppearanceConfig();
   const config = {
-    appName: next.appName || existing.appName,
+    appName: productBrandName(next.appName || existing.appName),
     aiName: next.aiName || existing.aiName,
     aiAvatarEmoji: next.aiAvatarEmoji || existing.aiAvatarEmoji,
     aiAvatarColor: next.aiAvatarColor || existing.aiAvatarColor,

@@ -68,7 +68,7 @@ export function PocketTrigger() {
   );
 }
 
-/** Pi Pocket-style client controls over OpenDot's existing authorized APIs. */
+/** Pi Pocket-style client controls over SKUHarbor's existing authorized APIs. */
 export function PocketPanel() {
   const route = useLocation();
   const owner = useAuthStore((s) => s.user?.id);
@@ -483,7 +483,7 @@ export function PocketPanel() {
                 <p className="text-xs text-muted-foreground">
                   {durable
                     ? '队列与操作回执以聊天上方的服务端快照为准；未确认的操作不会自动重发。'
-                    : '排队消息、编辑、排序和删除继续使用聊天输入区原有队列。Steer 沿用 OpenDot 现有服务端语义。'}
+                    : '排队消息、编辑、排序和删除继续使用聊天输入区原有队列。Steer 沿用 SKUHarbor 现有服务端语义。'}
                 </p>
               </section>
             )}
@@ -546,7 +546,7 @@ export function PocketPanel() {
               </p>
             </section>
             <section className="space-y-2" aria-label="Tailscale 接入">
-              <h3 className="font-medium">在运行 OpenDot 的电脑上执行</h3>
+              <h3 className="font-medium">在运行 SKUHarbor 的电脑上执行</h3>
               <code className="block overflow-x-auto rounded-lg border p-3 text-xs">
                 node scripts/pocket-access.mjs --serve
               </code>

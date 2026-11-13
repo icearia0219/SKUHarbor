@@ -23,7 +23,7 @@ interface NavItem {
 
 export function productNavItems(
   goalsEnabled: boolean,
-  dotName = 'OpenDot',
+  dotName = 'SKUHarbor',
   ecommerceEnabled = false,
 ) {
   return [
@@ -71,7 +71,7 @@ export function productNavItems(
       items.findIndex((other) => other.path === item.path) === index,
   );
 }
-export function mobileNavItems(goalsEnabled: boolean, dotName = 'OpenDot') {
+export function mobileNavItems(goalsEnabled: boolean, dotName = 'SKUHarbor') {
   return [
     {
       path: BOT_FIRST_HOME_ENABLED ? '/bots' : '/chat',

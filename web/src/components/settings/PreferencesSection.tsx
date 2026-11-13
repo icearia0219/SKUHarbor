@@ -61,7 +61,7 @@ const FONT_OPTIONS: {
 }[] = [
   {
     value: 'default',
-    label: 'OpenDot',
+    label: 'SKUHarbor',
     sample: 'Hello 你好',
     fontFamily: "'DM Sans', system-ui, sans-serif",
   },

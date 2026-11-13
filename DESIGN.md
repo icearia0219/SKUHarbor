@@ -1,21 +1,23 @@
-# OpenDot Design System
+# SKUHarbor Design System
 
-> OpenDot 的前端产品与视觉真相源。  
+SKUHarbor 基于 OpenDot 二次开发，当前定位为跨境电商运营 Copilot。以下沿用原聊天外壳的视觉与交互约束；电商工作台范围见 `docs/ecommerce-ops/`，本次改名没有重设计默认首页。
+
+> SKUHarbor 的前端产品与视觉真相源。
 > 新增或修改 Web、PWA、Electron UI 前，必须先阅读本文档。
 
-OpenDot 是 **Personal AI Assistant / Personal AI Team**，不是 Agent 管理后台。
+SKUHarbor 是 **Personal AI Assistant / Personal AI Team**，不是 Agent 管理后台。
 
 设计目标：
 
-> 用户打开 OpenDot 后，第一感受应该是“这是我的 AI 助手，我现在就可以和它说话”，而不是“这是一个需要配置的 Agent Dashboard”。
+> 用户打开 SKUHarbor 后，第一感受应该是“这是我的 AI 助手，我现在就可以和它说话”，而不是“这是一个需要配置的 Agent Dashboard”。
 
-产品结构参考 Grok Bot 的 conversation-first 交互；视觉语法参考 MiniMax Design System 的清晰、轻盈、品牌蓝和统一 token；品牌身份使用 OpenDot 自己的 Dot / Bot Avatar。
+产品结构参考 Grok Bot 的 conversation-first 交互；视觉语法参考 MiniMax Design System 的清晰、轻盈、品牌蓝和统一 token；品牌身份使用 SKUHarbor 自己的 Dot / Bot Avatar。
 
 ---
 
 ## 1. Design DNA
 
-OpenDot 的设计关键词：
+SKUHarbor 的设计关键词：
 
 - clean
 - airy
@@ -48,10 +50,10 @@ Grok Bot
 MiniMax-inspired Design System
 = Color / Type / Radius / Spacing / Motion
 
-OpenDot
+SKUHarbor
 = Brand Identity
 
-OpenDot Runtime
+SKUHarbor Runtime
 = Hidden Infrastructure
 ```
 
@@ -170,7 +172,7 @@ safe-area
 
 ## 4. Conversation First
 
-OpenDot 的默认入口必须是一个真实 Conversation，而不是 Dashboard。
+SKUHarbor 的默认入口必须是一个真实 Conversation，而不是 Dashboard。
 
 打开默认 Dot：
 
@@ -241,7 +243,7 @@ Mobile 使用 Composer 上方 picker 或 Bottom Sheet。
 
 ## 6. Visual Tokens
 
-以下是 OpenDot 的目标 token。新 UI 不应创建新的 ad-hoc 色值。
+以下是 SKUHarbor 的目标 token。新 UI 不应创建新的 ad-hoc 色值。
 
 现有代码可以渐进迁移，但任何新组件必须优先使用语义 token。
 
@@ -649,7 +651,7 @@ Goal detail 可以展示：
 
 静态品牌符号：
 
-- OpenDot 机器人脸
+- SKUHarbor 机器人脸
 - 深色圆角底
 - 白色 shell
 - 蓝色眼睛
@@ -918,13 +920,13 @@ Conversation PR 必须自动验证：
 
 视觉 token 与统一设计系统方法参考：
 
-- MiniMax Design System / OpenDesign  
+- MiniMax Design System / OpenDesign
   https://open-design.ai/plugins/design-system-minimax/
 
 产品信息架构参考：
 
 - Grok Bot 的 conversation-first 交互模式
-- OpenDot 用户提供的实际 Grok Bot 桌面端参考截图
+- SKUHarbor 用户提供的实际 Grok Bot 桌面端参考截图
 
 这些是设计参考，不要求像素级复制任何第三方品牌。
 
@@ -938,6 +940,6 @@ Conversation PR 必须自动验证：
 
 它就还没有完成。
 
-OpenDot 应该第一眼像：
+SKUHarbor 应该第一眼像：
 
 > **一个可以立即开始对话、长期陪伴、能持续完成工作的 Personal AI Assistant。**

@@ -980,7 +980,7 @@ export function ChatView({ groupJid, onBack, headerLeft }: ChatViewProps) {
             <Link className="w-4 h-4 flex-shrink-0" />
             <span className="flex-1 min-w-0">
               未配置消息渠道（飞书 / Telegram / Discord / QQ / 微信 / 钉钉 /
-              WhatsApp），消息无法与 OpenDot 的直接对话互通
+              WhatsApp），消息无法与 SKUHarbor 的直接对话互通
             </span>
             <button
               onClick={() => navigate('/setup/channels')}

@@ -1,11 +1,11 @@
-# Miniclaw — 工程协作指南
+# SKUHarbor — 工程协作指南
 
 本文档描述当前代码的工程约束和导航入口，供人类与 AI 协作者共同使用。
 
 ## 1. 文档与代码真相源
 
 - 产品介绍、安装和常用操作：`README.md`
-- OpenDot 前端产品与视觉真相源：`DESIGN.md`。任何 Web/PWA/Electron UI 改动必须先阅读并遵守它；不要在页面内创造新的视觉语法。
+- SKUHarbor 前端产品与视觉真相源：`DESIGN.md`。任何 Web/PWA/Electron UI 改动必须先阅读并遵守它；不要在页面内创造新的视觉语法。
 - 路由族与主要 Web API：`docs/API.md`
 - 权限边界：`docs/ACL-MATRIX.md`
 - 运行时 Prompt：`container/agent-runner/prompts/`
@@ -20,7 +20,7 @@
 
 ## 2. 产品模型
 
-Miniclaw 是基于 Pi Agent Runtime 的自托管、多用户 Agent 工作台，支持 Web 与飞书、
+SKUHarbor 基于 OpenDot / Pi Agent Runtime，保留自托管、多用户 Agent 工作台底座，支持 Web 与飞书、
 Telegram、QQ、钉钉、微信、Discord、WhatsApp。
 
 当前产品层级：

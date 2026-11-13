@@ -114,7 +114,9 @@ export function SettingsPage() {
       if (SYSTEM_TABS.includes(raw) && !canManageSystemConfig)
         return defaultTab;
       if (
-        (raw === 'main-agent' || raw === 'host-integration' || raw === 'observability') &&
+        (raw === 'main-agent' ||
+          raw === 'host-integration' ||
+          raw === 'observability') &&
         currentUser?.role !== 'admin'
       ) {
         return defaultTab;
@@ -147,7 +149,7 @@ export function SettingsPage() {
     registration: '注册策略',
     appearance: '常规与品牌',
     system: '运行与容量',
-    'main-agent': '主 OpenDot',
+    'main-agent': '主 SKUHarbor',
     'host-integration': '宿主机集成',
     observability: 'Langfuse 观测',
     billing: '计费管理',

@@ -25,9 +25,14 @@ describe('frontend identity ownership', () => {
 
   test('uses the branded avatar as the final global fallback', () => {
     expect(resolveAgentDisplayIdentity()).toMatchObject({
-      name: 'Miniclaw',
+      name: 'SKUHarbor',
       imageUrl: expect.stringContaining('assets/miniclaw-icon'),
     });
+  });
+
+  test('preserves existing Agent nicknames even when they match historical product brands', () => {
+    for (const agentName of ['OpenDot', 'Miniclaw', 'MiniClaw', '我的电商助手'])
+      expect(resolveAgentDisplayIdentity({ agentName }).name).toBe(agentName);
   });
 
   test('inherits the main avatar unless a custom Agent overrides it', () => {

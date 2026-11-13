@@ -193,6 +193,6 @@ export function checkNodeVersion() {
   const [major, minor] = process.versions.node.split('.').map(Number);
   if (major < 22 || (major === 22 && minor < 19))
     throw new Error(
-      'OpenDot requires Node.js 22.19 or newer; Node.js 24 is recommended.',
+      'SKUHarbor requires Node.js 22.19 or newer; Node.js 24 is recommended.',
     );
 }

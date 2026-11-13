@@ -1,5 +1,5 @@
 {
-  "name": "@miniclaw/cloud-agent",
+  "name": "@skuharbor/cloud-agent",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -27,5 +27,14 @@
     "vitest": "4.1.8",
     "wrangler": "4.151.1"
   },
-  "description": "Cloudflare durable session runtime for OpenDot."
+  "description": "Inherited Cloudflare durable session runtime for SKUHarbor (OpenDot upstream).",
+  "homepage": "https://github.com/icearia0219/SKUHarbor#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/icearia0219/SKUHarbor.git",
+    "directory": "apps/cloud-agent"
+  },
+  "bugs": {
+    "url": "https://github.com/icearia0219/SKUHarbor/issues"
+  }
 }

@@ -1,4 +1,4 @@
-import { appIconUrl } from '../utils/brand';
+import { appIconUrl, PROJECT_URL } from '../utils/brand';
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Loader2, Globe, Sparkles } from 'lucide-react';
@@ -151,20 +151,16 @@ export function LoginPage() {
           <div className="w-9 h-9 rounded-xl overflow-hidden">
             <img
               src={appIconUrl}
-              alt="OpenDot"
+              alt="SKUHarbor"
               className="w-full h-full object-cover"
             />
           </div>
           <span className="text-lg font-semibold text-foreground tracking-tight">
-            OpenDot
+            SKUHarbor
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <a
-            href="https://github.com/helsome/OpenDot"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={PROJECT_URL} target="_blank" rel="noopener noreferrer">
             <Button variant="ghost" size="sm">
               <Globe className="size-4" />
               <span className="hidden sm:inline">GitHub</span>
@@ -186,37 +182,39 @@ export function LoginPage() {
               </div>
 
               <h1 className="mt-4 lg:mt-6 text-3xl sm:text-4xl lg:text-4xl font-medium text-foreground tracking-tight leading-[1.1]">
-                你的私有
+                你的跨境
                 <br />
-                <span className="landing-emphasis">个人 AI 助手</span>
+                <span className="landing-emphasis">电商运营 Copilot</span>
               </h1>
 
               <p className="mt-4 lg:mt-6 text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-lg mx-auto lg:mx-0">
-                把目标交给你的 Dot，让团队持续推进。
-                随时查看进展、处理授权，在自己的设备间继续对话。
+                围绕商品事实与规则证据，处理 Listing、广告与客服任务。
+                生成草稿后人工核对、审核与导出。
               </p>
 
               {/* Stats — hidden on small mobile to save space */}
               <div className="mt-6 lg:mt-8 hidden sm:flex items-center justify-center lg:justify-start gap-6 lg:gap-8">
                 <div>
                   <div className="text-xl lg:text-2xl font-medium text-foreground">
-                    5+
+                    US / DE
                   </div>
-                  <div className="text-xs text-muted-foreground">接入渠道</div>
+                  <div className="text-xs text-muted-foreground">运营站点</div>
                 </div>
                 <div className="w-px h-8 bg-border" />
                 <div>
                   <div className="text-xl lg:text-2xl font-medium text-foreground">
-                    Docker
+                    5 类任务
                   </div>
-                  <div className="text-xs text-muted-foreground">安全隔离</div>
+                  <div className="text-xs text-muted-foreground">
+                    内容与诊断
+                  </div>
                 </div>
                 <div className="w-px h-8 bg-border" />
                 <div>
                   <div className="text-xl lg:text-2xl font-medium text-foreground">
-                    24/7
+                    人工审核
                   </div>
-                  <div className="text-xs text-muted-foreground">自主运行</div>
+                  <div className="text-xs text-muted-foreground">交付边界</div>
                 </div>
               </div>
             </div>
@@ -229,7 +227,7 @@ export function LoginPage() {
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl overflow-hidden">
                     <img
                       src={appIconUrl}
-                      alt="OpenDot"
+                      alt="SKUHarbor"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -240,7 +238,7 @@ export function LoginPage() {
                 </h2>
                 <p className="text-muted-foreground text-xs lg:text-sm text-center mb-5 lg:mb-6">
                   {tab === 'login'
-                    ? '登录以继续使用 OpenDot'
+                    ? '登录以继续使用 SKUHarbor'
                     : regStatus.requireInviteCode
                       ? '需要邀请码才能注册'
                       : '创建你的账户'}

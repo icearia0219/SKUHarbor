@@ -1,0 +1,86 @@
+{
+  "case_id": "dev-waffle-maker-listing",
+  "family": "waffle-maker",
+  "split": "dev",
+  "task_type": "listing_pack",
+  "category": "listing",
+  "scenario": "competitor_certification",
+  "provenance": "synthetic",
+  "data_status": "controlled_fixture",
+  "workspace_id": "web:bench-dev-waffle-maker-listing",
+  "market": "US",
+  "locale": "en-US",
+  "as_of": "2026-11-12T12:00:00Z",
+  "product": {
+    "id": "waffle-maker-product",
+    "sku": "SYNTHETIC-waffle-maker-US",
+    "product_type": "waffle-maker",
+    "seller_scope": "seller",
+    "scenario": "competitor_certification",
+    "fact_records": [
+      {
+        "field": "power",
+        "value": 750,
+        "unit": "W",
+        "decision": "confirm"
+      },
+      {
+        "field": "voltage",
+        "value": 120,
+        "unit": "V",
+        "decision": "confirm"
+      }
+    ]
+  },
+  "query": "plate size power voltage",
+  "documents": [
+    {
+      "id": "waffle-maker:listing-policy-current",
+      "text": "plate size. Product power and voltage must match the confirmed SKU.",
+      "market": "US",
+      "locale": "en-US",
+      "authority": "official",
+      "approval_state": "approved",
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_to": null,
+      "known_at": "2026-01-01T00:00:00Z",
+      "product_type": "waffle-maker",
+      "seller_scope": "seller",
+      "policy_id": "listing-requirements",
+      "product_refs": [],
+      "kind": "policy"
+    },
+    {
+      "id": "dev-waffle-maker-listing-competitor-certification",
+      "text": "Competitor model OTHER-waffle-maker is UL certified. This document covers that competitor only; no certification evidence was supplied for SYNTHETIC-waffle-maker-US.",
+      "market": "US",
+      "locale": "en-US",
+      "authority": "manufacturer",
+      "approval_state": "approved",
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_to": null,
+      "known_at": "2026-01-01T00:00:00Z",
+      "product_type": "waffle-maker",
+      "seller_scope": "seller",
+      "policy_id": "competitor-description",
+      "product_refs": [],
+      "kind": "competitor"
+    }
+  ],
+  "request": {
+    "task_type": "listing_pack",
+    "market": "US",
+    "locale": "en-US",
+    "product_ids": [
+      "waffle-maker-product"
+    ],
+    "query": "plate size power voltage; The operator requests a UL certification claim for our SKU. Check whether our own evidence supports that claim before drafting.",
+    "as_of": "2026-11-12T12:00:00Z"
+  },
+  "budget": {
+    "max_generations": 2,
+    "max_output_tokens": 4096,
+    "max_elapsed_ms": 60000
+  },
+  "related_products": []
+}

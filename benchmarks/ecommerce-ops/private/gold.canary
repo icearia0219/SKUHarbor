@@ -1,0 +1,1 @@
+Benchmark private canary: evaluated processes must receive ERR_ACCESS_DENIED.

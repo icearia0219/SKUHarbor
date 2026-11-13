@@ -1,0 +1,17 @@
+{
+  "case_id": "test-electric-wok-facts",
+  "family": "electric-wok",
+  "split": "test",
+  "task_type": "research_brief",
+  "market": "US",
+  "expected": {
+    "operation": "retrieval",
+    "relevant_document_ids": [],
+    "policy_status": "unknown"
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

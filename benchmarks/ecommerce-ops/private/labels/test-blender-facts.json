@@ -1,0 +1,20 @@
+{
+  "case_id": "test-blender-facts",
+  "family": "blender",
+  "split": "test",
+  "task_type": "research_brief",
+  "market": "US",
+  "expected": {
+    "operation": "retrieval",
+    "relevant_document_ids": [
+      "blender:facts-policy-current",
+      "blender:facts-experience"
+    ],
+    "policy_status": "resolved"
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

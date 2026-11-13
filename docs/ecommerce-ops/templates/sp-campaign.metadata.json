@@ -1,0 +1,16 @@
+{
+  "report_id": "synthetic-sp-campaign-1",
+  "workspace_id": "web:synthetic-demo",
+  "market": "US",
+  "currency": "USD",
+  "timezone": "America/Los_Angeles",
+  "account": "synthetic-account",
+  "ad_product": "SP",
+  "advertiser_type": "seller",
+  "attribution_window_days": 7,
+  "reporting_delay_days": 2,
+  "granularity": "daily",
+  "date_range": { "start": "2026-01-01", "end": "2026-01-02" },
+  "generated_at": "2026-01-13T00:00:00Z",
+  "provenance": "synthetic"
+}

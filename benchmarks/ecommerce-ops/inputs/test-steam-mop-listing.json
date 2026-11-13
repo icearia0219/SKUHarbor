@@ -1,0 +1,70 @@
+{
+  "case_id": "test-steam-mop-listing",
+  "family": "steam-mop",
+  "split": "test",
+  "task_type": "listing_pack",
+  "category": "listing",
+  "scenario": "valid_unicode",
+  "provenance": "synthetic",
+  "data_status": "controlled_fixture",
+  "workspace_id": "web:bench-test-steam-mop-listing",
+  "market": "DE",
+  "locale": "de-DE",
+  "as_of": "2026-11-12T12:00:00Z",
+  "product": {
+    "id": "steam-mop-product",
+    "sku": "SYNTHETIC-steam-mop-DE",
+    "product_type": "steam-mop",
+    "seller_scope": "seller",
+    "scenario": "valid_unicode",
+    "fact_records": [
+      {
+        "field": "power",
+        "value": 1210,
+        "unit": "W",
+        "decision": "confirm"
+      },
+      {
+        "field": "voltage",
+        "value": 230,
+        "unit": "V",
+        "decision": "confirm"
+      }
+    ]
+  },
+  "query": "cable length power voltage",
+  "documents": [
+    {
+      "id": "steam-mop:listing-policy-current",
+      "text": "cable length. Product power and voltage must match the confirmed SKU.",
+      "market": "DE",
+      "locale": "de-DE",
+      "authority": "official",
+      "approval_state": "approved",
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_to": null,
+      "known_at": "2026-01-01T00:00:00Z",
+      "product_type": "steam-mop",
+      "seller_scope": "seller",
+      "policy_id": "listing-requirements",
+      "product_refs": [],
+      "kind": "policy"
+    }
+  ],
+  "request": {
+    "task_type": "listing_pack",
+    "market": "DE",
+    "locale": "de-DE",
+    "product_ids": [
+      "steam-mop-product"
+    ],
+    "query": "cable length power voltage; Preserve Unicode correctly in the German draft (für, Größe, Gerät) when supported by the source.",
+    "as_of": "2026-11-12T12:00:00Z"
+  },
+  "budget": {
+    "max_generations": 2,
+    "max_output_tokens": 4096,
+    "max_elapsed_ms": 60000
+  },
+  "related_products": []
+}

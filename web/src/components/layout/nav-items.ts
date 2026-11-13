@@ -9,6 +9,7 @@ import {
   Target,
   Users,
   Brain,
+  ShoppingBag,
 } from 'lucide-react';
 import { BOT_FIRST_HOME_ENABLED } from '../../utils/bot-first';
 
@@ -20,7 +21,11 @@ interface NavItem {
   hideOnMobile?: boolean;
 }
 
-export function productNavItems(goalsEnabled: boolean, dotName = 'OpenDot') {
+export function productNavItems(
+  goalsEnabled: boolean,
+  dotName = 'OpenDot',
+  ecommerceEnabled = false,
+) {
   return [
     {
       path: BOT_FIRST_HOME_ENABLED ? '/bots' : '/chat',
@@ -50,6 +55,16 @@ export function productNavItems(goalsEnabled: boolean, dotName = 'OpenDot') {
       label: '我的工作',
       section: 'WORK',
     },
+    ...(ecommerceEnabled
+      ? [
+          {
+            path: '/ecommerce-ops',
+            icon: ShoppingBag,
+            label: '电商运营',
+            section: '',
+          },
+        ]
+      : []),
     { path: '/chat', icon: Clock4, label: '最近会话', section: '' },
   ].filter(
     (item, index, items) =>

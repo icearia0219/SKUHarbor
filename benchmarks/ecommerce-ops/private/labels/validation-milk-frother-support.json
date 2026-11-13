@@ -1,0 +1,18 @@
+{
+  "case_id": "validation-milk-frother-support",
+  "family": "milk-frother",
+  "split": "validation",
+  "task_type": "support_draft",
+  "market": "DE",
+  "expected": {
+    "operation": "support_guard",
+    "action": "reply_draft",
+    "completion_verified": true,
+    "unsupported_completion_allowed": 0
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

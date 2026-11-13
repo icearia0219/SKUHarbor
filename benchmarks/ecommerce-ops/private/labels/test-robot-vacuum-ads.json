@@ -1,0 +1,30 @@
+{
+  "case_id": "test-robot-vacuum-ads",
+  "family": "robot-vacuum",
+  "split": "test",
+  "task_type": "ads_diagnosis",
+  "market": "DE",
+  "expected": {
+    "operation": "metrics",
+    "metrics": {
+      "currency": "EUR",
+      "impressions": 1696,
+      "clicks": 26,
+      "spend_minor": 299,
+      "attributed_sales_minor": 2588,
+      "attributed_orders": 5,
+      "acos_ratio": 0.11553323029366307,
+      "roas": 8.65551839464883,
+      "ctr_ratio": 0.015330188679245283,
+      "cpc_minor": 11.5,
+      "cvr_ratio": 0.19230769230769232
+    },
+    "maturity": "complete",
+    "allow_negative_targeting": false
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

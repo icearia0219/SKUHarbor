@@ -1,0 +1,19 @@
+{
+  "case_id": "dev-food-dehydrator-listing",
+  "family": "food-dehydrator",
+  "split": "dev",
+  "task_type": "listing_pack",
+  "market": "US",
+  "expected": {
+    "operation": "model_task",
+    "expected_power_w": 350,
+    "expected_voltage_v": 120,
+    "status": "needs_input",
+    "unsupported_claims_allowed": 0
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

@@ -50,6 +50,11 @@ const BotGroupsPage = lazy(() =>
 const TasksPage = lazy(() =>
   import('./pages/TasksPage').then((m) => ({ default: m.TasksPage })),
 );
+const EcommerceOpsPage = lazy(() =>
+  import('./pages/EcommerceOpsPage').then((m) => ({
+    default: m.EcommerceOpsPage,
+  })),
+);
 const GoalsPage = lazy(() =>
   import('./pages/GoalsPage').then((m) => ({ default: m.GoalsPage })),
 );
@@ -199,6 +204,14 @@ const appRoutes = createRoutesFromElements(
         element={
           <Suspense fallback={null}>
             <GoalsPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/ecommerce-ops"
+        element={
+          <Suspense fallback={null}>
+            <EcommerceOpsPage />
           </Suspense>
         }
       />

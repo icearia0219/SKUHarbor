@@ -1,0 +1,18 @@
+{
+  "case_id": "test-steam-mop-support",
+  "family": "steam-mop",
+  "split": "test",
+  "task_type": "support_draft",
+  "market": "US",
+  "expected": {
+    "operation": "support_guard",
+    "action": "escalate",
+    "completion_verified": false,
+    "unsupported_completion_allowed": 0
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

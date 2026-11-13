@@ -1,0 +1,5 @@
+# Keep executable thin wrappers portable on Windows Git checkouts.
+/scripts/ecommerce-* text eol=lf
+# Frozen input/label byte hashes must survive checkout on every host.
+/benchmarks/ecommerce-ops/**/*.json text eol=lf
+/benchmarks/ecommerce-ops/manifest.json text eol=lf

@@ -1,0 +1,19 @@
+{
+  "case_id": "test-robot-vacuum-facts",
+  "family": "robot-vacuum",
+  "split": "test",
+  "task_type": "research_brief",
+  "market": "US",
+  "expected": {
+    "operation": "retrieval",
+    "relevant_document_ids": [
+      "robot-vacuum:facts-policy-current"
+    ],
+    "policy_status": "resolved"
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

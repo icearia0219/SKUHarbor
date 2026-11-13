@@ -1,0 +1,12 @@
+{
+  "kind": "product_fact",
+  "provenance": "synthetic",
+  "owner_scope": "REPLACE_WITH_AUTHORIZED_WORKSPACE_JID",
+  "market": "DE",
+  "locale": "de-DE",
+  "product_refs": [],
+  "observed_at": "2026-11-12T00:00:00Z",
+  "rights_note": "Self-authored fictional demonstration. Independent DE SKU, not a conversion of the US product.",
+  "version": "1",
+  "source_url": null
+}

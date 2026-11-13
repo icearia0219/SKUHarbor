@@ -139,6 +139,10 @@ import {
   bindMessageFeedbackDatabase,
   createMessageFeedbackSchema,
 } from './personal-agent/message-feedback.js';
+import {
+  bindEcommerceDatabase,
+  createEcommerceSchema,
+} from './ecommerce-ops/repository.js';
 
 let db: InstanceType<typeof Database>;
 /**
@@ -146,7 +150,7 @@ let db: InstanceType<typeof Database>;
  * restating the number. Hardcoding it meant every schema bump edited a dozen
  * unrelated test files, which is churn that hides real assertion changes.
  */
-export const CURRENT_SCHEMA_VERSION = 107;
+export const CURRENT_SCHEMA_VERSION = 108;
 
 export function isDatabaseInitialized(): boolean {
   return Boolean(db?.open);
@@ -2573,6 +2577,10 @@ export function initDatabase(): void {
   createGroupDiscussionSchema(db);
   bindGroupDiscussionDatabase(db);
 
+  // v107 -> v108: additive ecommerce objects and immutable source/evidence BLOBs.
+  // Reuse this connection after the existing verified pre-migration backup gate.
+  createEcommerceSchema(db);
+  bindEcommerceDatabase(db);
   db.prepare(
     'INSERT OR REPLACE INTO router_state (key, value) VALUES (?, ?)',
   ).run('schema_version', String(CURRENT_SCHEMA_VERSION));
@@ -14826,6 +14834,7 @@ export function closeDatabase(): void {
   bindGroupDiscussionDatabase(null);
   bindProductRuntimeDatabase(null);
   bindMessageFeedbackDatabase(null);
+  bindEcommerceDatabase(null);
   bindApprovalDatabase(null);
   if (db) {
     db.close();

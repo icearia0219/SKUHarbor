@@ -1,0 +1,30 @@
+{
+  "case_id": "test-hotplate-ads",
+  "family": "hotplate",
+  "split": "test",
+  "task_type": "ads_diagnosis",
+  "market": "DE",
+  "expected": {
+    "operation": "metrics",
+    "metrics": {
+      "currency": "EUR",
+      "impressions": 1564,
+      "clicks": 23,
+      "spend_minor": 257,
+      "attributed_sales_minor": 2312,
+      "attributed_orders": 6,
+      "acos_ratio": 0.111159169550173,
+      "roas": 8.996108949416342,
+      "ctr_ratio": 0.014705882352941176,
+      "cpc_minor": 11.173913043478262,
+      "cvr_ratio": 0.2608695652173913
+    },
+    "maturity": "incomplete",
+    "allow_negative_targeting": false
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

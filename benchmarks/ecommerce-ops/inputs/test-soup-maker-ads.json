@@ -1,0 +1,94 @@
+{
+  "case_id": "test-soup-maker-ads",
+  "family": "soup-maker",
+  "split": "test",
+  "task_type": "ad_pack",
+  "category": "ads",
+  "scenario": "placement_8",
+  "provenance": "synthetic",
+  "data_status": "controlled_fixture",
+  "workspace_id": "web:bench-test-soup-maker-ads",
+  "market": "US",
+  "locale": "en-US",
+  "as_of": "2026-11-12T12:00:00Z",
+  "product": {
+    "id": "soup-maker-product",
+    "sku": "SYNTHETIC-soup-maker-US",
+    "product_type": "soup-maker",
+    "seller_scope": "seller",
+    "scenario": "confirmed",
+    "fact_records": [
+      {
+        "field": "power",
+        "value": 950,
+        "unit": "W",
+        "decision": "confirm"
+      },
+      {
+        "field": "voltage",
+        "value": 120,
+        "unit": "V",
+        "decision": "confirm"
+      }
+    ]
+  },
+  "query": "jug volume power voltage",
+  "documents": [
+    {
+      "id": "soup-maker:ads-policy-current",
+      "text": "jug volume. Product power and voltage must match the confirmed SKU.",
+      "market": "US",
+      "locale": "en-US",
+      "authority": "official",
+      "approval_state": "approved",
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_to": null,
+      "known_at": "2026-01-01T00:00:00Z",
+      "product_type": "soup-maker",
+      "seller_scope": "seller",
+      "policy_id": "listing-requirements",
+      "product_refs": [],
+      "kind": "policy"
+    }
+  ],
+  "request": {
+    "task_type": "ad_pack",
+    "market": "US",
+    "locale": "en-US",
+    "product_ids": [
+      "soup-maker-product"
+    ],
+    "query": "jug volume power voltage",
+    "as_of": "2026-11-12T12:00:00Z",
+    "placement": "internal_draft"
+  },
+  "budget": {
+    "max_generations": 2,
+    "max_output_tokens": 4096,
+    "max_elapsed_ms": 60000
+  },
+  "report": {
+    "mapping": "sp-campaign-v1",
+    "metadata": {
+      "report_id": "test-soup-maker-ads-report",
+      "workspace_id": "web:bench-test-soup-maker-ads",
+      "market": "US",
+      "currency": "USD",
+      "timezone": "America/Los_Angeles",
+      "account": "synthetic-soup-maker",
+      "ad_product": "SP",
+      "advertiser_type": "seller",
+      "attribution_window_days": 7,
+      "reporting_delay_days": 2,
+      "granularity": "daily",
+      "date_range": {
+        "start": "2026-10-01",
+        "end": "2026-10-02"
+      },
+      "generated_at": "2026-10-15T00:00:00Z",
+      "provenance": "synthetic"
+    },
+    "csv": "Date,Campaign ID,Impressions,Clicks,Spend,Attributed Sales,Attributed Orders,Attributed Units\n2026-10-01,synthetic-soup-maker,1296,18,2.05,16.64,2,13\n2026-10-02,synthetic-soup-maker,136,2,0.10,3.72,1,7"
+  },
+  "related_products": []
+}

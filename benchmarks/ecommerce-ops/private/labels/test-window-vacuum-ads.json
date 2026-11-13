@@ -1,0 +1,30 @@
+{
+  "case_id": "test-window-vacuum-ads",
+  "family": "window-vacuum",
+  "split": "test",
+  "task_type": "ads_diagnosis",
+  "market": "US",
+  "expected": {
+    "operation": "metrics",
+    "metrics": {
+      "currency": "USD",
+      "impressions": 1652,
+      "clicks": 24,
+      "spend_minor": 285,
+      "attributed_sales_minor": 2496,
+      "attributed_orders": 4,
+      "acos_ratio": 0.1141826923076923,
+      "roas": 8.757894736842106,
+      "ctr_ratio": 0.014527845036319613,
+      "cpc_minor": 11.875,
+      "cvr_ratio": 0.16666666666666666
+    },
+    "maturity": "complete",
+    "allow_negative_targeting": false
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

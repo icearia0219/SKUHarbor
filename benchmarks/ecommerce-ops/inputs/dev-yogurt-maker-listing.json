@@ -1,0 +1,64 @@
+{
+  "case_id": "dev-yogurt-maker-listing",
+  "family": "yogurt-maker",
+  "split": "dev",
+  "task_type": "listing_pack",
+  "category": "listing",
+  "scenario": "missing_voltage",
+  "provenance": "synthetic",
+  "data_status": "controlled_fixture",
+  "workspace_id": "web:bench-dev-yogurt-maker-listing",
+  "market": "US",
+  "locale": "en-US",
+  "as_of": "2026-11-12T12:00:00Z",
+  "product": {
+    "id": "yogurt-maker-product",
+    "sku": "SYNTHETIC-yogurt-maker-US",
+    "product_type": "yogurt-maker",
+    "seller_scope": "seller",
+    "scenario": "missing_voltage",
+    "fact_records": [
+      {
+        "field": "power",
+        "value": 20,
+        "unit": "W",
+        "decision": "confirm"
+      }
+    ]
+  },
+  "query": "jar count power voltage",
+  "documents": [
+    {
+      "id": "yogurt-maker:listing-policy-current",
+      "text": "jar count. Product power and voltage must match the confirmed SKU.",
+      "market": "US",
+      "locale": "en-US",
+      "authority": "official",
+      "approval_state": "approved",
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_to": null,
+      "known_at": "2026-01-01T00:00:00Z",
+      "product_type": "yogurt-maker",
+      "seller_scope": "seller",
+      "policy_id": "listing-requirements",
+      "product_refs": [],
+      "kind": "policy"
+    }
+  ],
+  "request": {
+    "task_type": "listing_pack",
+    "market": "US",
+    "locale": "en-US",
+    "product_ids": [
+      "yogurt-maker-product"
+    ],
+    "query": "jar count power voltage",
+    "as_of": "2026-11-12T12:00:00Z"
+  },
+  "budget": {
+    "max_generations": 2,
+    "max_output_tokens": 4096,
+    "max_elapsed_ms": 60000
+  },
+  "related_products": []
+}

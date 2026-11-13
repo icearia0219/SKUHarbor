@@ -1,0 +1,19 @@
+{
+  "case_id": "test-travel-kettle-facts",
+  "family": "travel-kettle",
+  "split": "test",
+  "task_type": "research_brief",
+  "market": "US",
+  "expected": {
+    "operation": "retrieval",
+    "relevant_document_ids": [
+      "travel-kettle:facts-policy-current"
+    ],
+    "policy_status": "resolved"
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

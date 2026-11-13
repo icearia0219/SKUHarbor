@@ -14,39 +14,40 @@
 
 ## 路由模块
 
-| 前缀                               | 实现                               | 用途                          |
-| ---------------------------------- | ---------------------------------- | ----------------------------- |
-| `/api/auth`                        | `src/routes/auth.ts`               | 初始化、登录、账户、设备      |
-| `/api/groups`                      | `src/routes/groups.ts`             | 工作区兼容模型、消息和环境    |
-| `/api/groups`                      | `src/routes/files.ts`              | 工作区文件                    |
-| `/api/groups`                      | `src/routes/agents.ts`             | Runtime Session 与渠道绑定    |
-| `/api/groups`                      | `src/routes/workspace-config.ts`   | 项目 Skills/MCP               |
-| `/api/workspaces`                  | `src/routes/workspaces.ts`         | Agent-first 工作区投影        |
-| `/api/bot-groups`                  | `src/routes/bot-groups.ts`         | 群成员、时间线与回执          |
-| `/api/agent-profiles`              | `src/routes/agent-profiles.ts`     | 产品级 Agent                  |
-| `/api/channel-accounts`            | `src/routes/channel-accounts.ts`   | 多渠道账号                    |
-| `/api/config`                      | `src/routes/config.ts`             | Provider、系统与兼容渠道配置  |
-| `/api/tasks`                       | `src/routes/tasks.ts`              | 定时任务和运行                |
-| `/api/goals`                       | `src/routes/goals.ts`              | Personal Goal 与关联任务控制  |
-| `/api/team-overview`               | `src/routes/team-overview.ts`      | 本人的团队、目标与待处理快照  |
-| `/api/github-goals`                | `src/routes/github-triggers.ts`    | 签名 GitHub 事件与例行任务    |
-| `/api/cloud-runtime`               | `src/routes/cloud-runtime.ts`      | 私有云端权限与模型代理回调    |
-| `/api/device-nodes`                | `src/routes/device-nodes.ts`       | 配对、有限文件授权与节点传输  |
-| `/api/local-device-setup`          | `src/routes/local-device-setup.ts` | 本机设备安装与就绪检查        |
-| `/api/observability`               | `src/routes/observability.ts`      | 管理员可观测性配置            |
-| `/api/personal-memory`             | `src/routes/personal-memory.ts`    | 显式授权的个人记忆与修订范围  |
-| `/api/mem0-private`                | `src/routes/mem0-private.ts`       | 私聊 Mem0 配置                |
-| `/api/memory`                      | `src/routes/memory.ts`             | Workspace Memory v2           |
-| `/api/skills`                      | `src/routes/skills.ts`             | 用户 Skills                   |
-| `/api/mcp-servers`                 | `src/routes/mcp-servers.ts`        | 用户/系统 MCP                 |
-| `/api/plugins`                     | `src/routes/plugins.ts`            | Plugin Catalog 与用户启用状态 |
-| `/api/usage`                       | `src/routes/usage.ts`              | Token 用量                    |
-| `/api/billing`                     | `src/routes/billing.ts`            | 订阅、余额和计费管理          |
-| `/api/admin`                       | `src/routes/admin.ts`              | 用户、邀请和审计              |
-| `/api/bug-report`                  | `src/routes/bug-report.ts`         | 脱敏问题报告                  |
-| `/api/browse`                      | `src/routes/browse.ts`             | Host 目录选择                 |
-| `/api`                             | `src/routes/monitor.ts`            | 健康、状态和 Docker 构建      |
-| `/api/messages`、`/api/follow-ups` | `src/web.ts`                       | 消息发送和 Follow-up          |
+| 前缀                               | 实现                               | 用途                               |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `/api/auth`                        | `src/routes/auth.ts`               | 初始化、登录、账户、设备           |
+| `/api/groups`                      | `src/routes/groups.ts`             | 工作区兼容模型、消息和环境         |
+| `/api/groups`                      | `src/routes/files.ts`              | 工作区文件                         |
+| `/api/groups`                      | `src/routes/agents.ts`             | Runtime Session 与渠道绑定         |
+| `/api/groups`                      | `src/routes/workspace-config.ts`   | 项目 Skills/MCP                    |
+| `/api/workspaces`                  | `src/routes/workspaces.ts`         | Agent-first 工作区投影             |
+| `/api/bot-groups`                  | `src/routes/bot-groups.ts`         | 群成员、时间线与回执               |
+| `/api/agent-profiles`              | `src/routes/agent-profiles.ts`     | 产品级 Agent                       |
+| `/api/channel-accounts`            | `src/routes/channel-accounts.ts`   | 多渠道账号                         |
+| `/api/config`                      | `src/routes/config.ts`             | Provider、系统与兼容渠道配置       |
+| `/api/tasks`                       | `src/routes/tasks.ts`              | 定时任务和运行                     |
+| `/api/goals`                       | `src/routes/goals.ts`              | Personal Goal 与关联任务控制       |
+| `/api/ecommerce-ops`               | `src/routes/ecommerce-ops.ts`      | 电商资料、草稿、精确版本审核和导出 |
+| `/api/team-overview`               | `src/routes/team-overview.ts`      | 本人的团队、目标与待处理快照       |
+| `/api/github-goals`                | `src/routes/github-triggers.ts`    | 签名 GitHub 事件与例行任务         |
+| `/api/cloud-runtime`               | `src/routes/cloud-runtime.ts`      | 私有云端权限与模型代理回调         |
+| `/api/device-nodes`                | `src/routes/device-nodes.ts`       | 配对、有限文件授权与节点传输       |
+| `/api/local-device-setup`          | `src/routes/local-device-setup.ts` | 本机设备安装与就绪检查             |
+| `/api/observability`               | `src/routes/observability.ts`      | 管理员可观测性配置                 |
+| `/api/personal-memory`             | `src/routes/personal-memory.ts`    | 显式授权的个人记忆与修订范围       |
+| `/api/mem0-private`                | `src/routes/mem0-private.ts`       | 私聊 Mem0 配置                     |
+| `/api/memory`                      | `src/routes/memory.ts`             | Workspace Memory v2                |
+| `/api/skills`                      | `src/routes/skills.ts`             | 用户 Skills                        |
+| `/api/mcp-servers`                 | `src/routes/mcp-servers.ts`        | 用户/系统 MCP                      |
+| `/api/plugins`                     | `src/routes/plugins.ts`            | Plugin Catalog 与用户启用状态      |
+| `/api/usage`                       | `src/routes/usage.ts`              | Token 用量                         |
+| `/api/billing`                     | `src/routes/billing.ts`            | 订阅、余额和计费管理               |
+| `/api/admin`                       | `src/routes/admin.ts`              | 用户、邀请和审计                   |
+| `/api/bug-report`                  | `src/routes/bug-report.ts`         | 脱敏问题报告                       |
+| `/api/browse`                      | `src/routes/browse.ts`             | Host 目录选择                      |
+| `/api`                             | `src/routes/monitor.ts`            | 健康、状态和 Docker 构建           |
+| `/api/messages`、`/api/follow-ups` | `src/web.ts`                       | 消息发送和 Follow-up               |
 
 ## 认证
 

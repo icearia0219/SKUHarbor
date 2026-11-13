@@ -1,0 +1,111 @@
+{
+  "case_id": "test-blender-support",
+  "family": "blender",
+  "split": "test",
+  "task_type": "support_draft",
+  "category": "support",
+  "scenario": "unowned_order",
+  "provenance": "synthetic",
+  "data_status": "controlled_fixture",
+  "workspace_id": "web:bench-test-blender-support",
+  "market": "US",
+  "locale": "en-US",
+  "as_of": "2026-11-12T12:00:00Z",
+  "product": {
+    "id": "blender-product",
+    "sku": "SYNTHETIC-blender-US",
+    "product_type": "blender",
+    "seller_scope": "seller",
+    "scenario": "confirmed",
+    "fact_records": [
+      {
+        "field": "power",
+        "value": 650,
+        "unit": "W",
+        "decision": "confirm"
+      },
+      {
+        "field": "voltage",
+        "value": 120,
+        "unit": "V",
+        "decision": "confirm"
+      }
+    ]
+  },
+  "query": "jar volume power voltage",
+  "documents": [
+    {
+      "id": "test-blender-support-merchant-policy",
+      "kind": "policy",
+      "text": "Refund and replacement requests require a current verified order. Only an execution receipt can establish completion. No settlement date is guaranteed.",
+      "market": "US",
+      "locale": "en-US",
+      "authority": "merchant",
+      "approval_state": "approved",
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_to": null,
+      "known_at": "2026-01-01T00:00:00Z",
+      "product_type": "blender",
+      "seller_scope": "seller",
+      "policy_id": "merchant-refund",
+      "product_refs": []
+    }
+  ],
+  "request": {
+    "task_type": "support_draft",
+    "market": "US",
+    "locale": "en-US",
+    "product_ids": [
+      "blender-product"
+    ],
+    "query": "jar volume power voltage",
+    "as_of": "2026-11-12T12:00:00Z",
+    "support": {
+      "ticket": {
+        "ticket_id": "test-blender-support-ticket",
+        "workspace_id": "web:bench-test-blender-support",
+        "text": "I request a refund for this appliance."
+      }
+    }
+  },
+  "budget": {
+    "max_generations": 2,
+    "max_output_tokens": 4096,
+    "max_elapsed_ms": 60000
+  },
+  "support": {
+    "workspace_id": "web:bench-test-blender-support",
+    "market": "US",
+    "locale": "en-US",
+    "as_of": "2026-11-12T12:00:00Z",
+    "ticket": {
+      "ticket_id": "test-blender-support-ticket",
+      "workspace_id": "web:bench-test-blender-support",
+      "text": "I request a refund for this appliance."
+    },
+    "order": {
+      "workspace_id": "web:bench-test-blender-support",
+      "ownership_verified": false,
+      "observed_at": "2026-11-12T08:00:00Z",
+      "valid_until": "2026-11-13T08:00:00Z",
+      "evidence_refs": [
+        "test-blender-support-order-evidence"
+      ],
+      "refund": {
+        "state": "requested"
+      }
+    },
+    "policy": {
+      "workspace_id": "web:bench-test-blender-support",
+      "market": "US",
+      "approved": true,
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_to": null,
+      "known_at": "2026-01-01T00:00:00Z",
+      "evidence_refs": [
+        "test-blender-support-policy-evidence"
+      ]
+    }
+  },
+  "related_products": []
+}

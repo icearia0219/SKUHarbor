@@ -1,0 +1,19 @@
+{
+  "case_id": "validation-egg-cooker-listing",
+  "family": "egg-cooker",
+  "split": "validation",
+  "task_type": "listing_pack",
+  "market": "US",
+  "expected": {
+    "operation": "model_task",
+    "expected_power_w": 400,
+    "expected_voltage_v": 120,
+    "status": "needs_input",
+    "unsupported_claims_allowed": 0
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

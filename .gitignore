@@ -90,3 +90,4 @@ models.json
 # Native Windows local caches and verification output.
 /.npm-cache/
 /.windows-verification/
+/artifacts/

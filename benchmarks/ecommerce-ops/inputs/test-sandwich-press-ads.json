@@ -1,0 +1,94 @@
+{
+  "case_id": "test-sandwich-press-ads",
+  "family": "sandwich-press",
+  "split": "test",
+  "task_type": "ads_diagnosis",
+  "category": "ads",
+  "scenario": "metrics_5",
+  "provenance": "synthetic",
+  "data_status": "controlled_fixture",
+  "workspace_id": "web:bench-test-sandwich-press-ads",
+  "market": "US",
+  "locale": "en-US",
+  "as_of": "2026-11-12T12:00:00Z",
+  "product": {
+    "id": "sandwich-press-product",
+    "sku": "SYNTHETIC-sandwich-press-US",
+    "product_type": "sandwich-press",
+    "seller_scope": "seller",
+    "scenario": "confirmed",
+    "fact_records": [
+      {
+        "field": "power",
+        "value": 700,
+        "unit": "W",
+        "decision": "confirm"
+      },
+      {
+        "field": "voltage",
+        "value": 120,
+        "unit": "V",
+        "decision": "confirm"
+      }
+    ]
+  },
+  "query": "plate width power voltage",
+  "documents": [
+    {
+      "id": "sandwich-press:ads-policy-current",
+      "text": "plate width. Product power and voltage must match the confirmed SKU.",
+      "market": "US",
+      "locale": "en-US",
+      "authority": "official",
+      "approval_state": "approved",
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_to": null,
+      "known_at": "2026-01-01T00:00:00Z",
+      "product_type": "sandwich-press",
+      "seller_scope": "seller",
+      "policy_id": "listing-requirements",
+      "product_refs": [],
+      "kind": "policy"
+    }
+  ],
+  "request": {
+    "task_type": "ads_diagnosis",
+    "market": "US",
+    "locale": "en-US",
+    "product_ids": [
+      "sandwich-press-product"
+    ],
+    "query": "plate width power voltage",
+    "as_of": "2026-11-12T12:00:00Z",
+    "placement": "internal_draft"
+  },
+  "budget": {
+    "max_generations": 2,
+    "max_output_tokens": 4096,
+    "max_elapsed_ms": 60000
+  },
+  "report": {
+    "mapping": "sp-campaign-v1",
+    "metadata": {
+      "report_id": "test-sandwich-press-ads-report",
+      "workspace_id": "web:bench-test-sandwich-press-ads",
+      "market": "US",
+      "currency": "USD",
+      "timezone": "America/Los_Angeles",
+      "account": "synthetic-sandwich-press",
+      "ad_product": "SP",
+      "advertiser_type": "seller",
+      "attribution_window_days": 7,
+      "reporting_delay_days": 2,
+      "granularity": "daily",
+      "date_range": {
+        "start": "2026-10-01",
+        "end": "2026-10-02"
+      },
+      "generated_at": "2026-10-15T00:00:00Z",
+      "provenance": "synthetic"
+    },
+    "csv": "Date,Campaign ID,Impressions,Clicks,Spend,Attributed Sales,Attributed Orders,Attributed Units\n2026-10-01,synthetic-sandwich-press,1185,0,1.66,14.15,0,10\n2026-10-02,synthetic-sandwich-press,115,0,0.07,3.45,0,7"
+  },
+  "related_products": []
+}

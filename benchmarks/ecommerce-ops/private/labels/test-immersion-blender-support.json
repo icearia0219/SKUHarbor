@@ -1,0 +1,18 @@
+{
+  "case_id": "test-immersion-blender-support",
+  "family": "immersion-blender",
+  "split": "test",
+  "task_type": "support_draft",
+  "market": "DE",
+  "expected": {
+    "operation": "support_guard",
+    "action": "escalate",
+    "completion_verified": false,
+    "unsupported_completion_allowed": 0
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

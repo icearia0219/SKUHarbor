@@ -30,6 +30,7 @@ vi.mock('../src/config.js', async () => {
 
 const {
   initDatabase,
+  closeDatabase,
   incrementUsageBoth,
   createBillingPlan,
   getBillingPlan,
@@ -48,6 +49,7 @@ beforeAll(() => {
 
 afterAll(() => {
   if (probeDb) probeDb.close();
+  closeDatabase();
   fs.rmSync(tmpDir, { recursive: true, force: true });
 });
 

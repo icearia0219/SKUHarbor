@@ -1,0 +1,19 @@
+{
+  "case_id": "test-travel-kettle-listing",
+  "family": "travel-kettle",
+  "split": "test",
+  "task_type": "listing_pack",
+  "market": "DE",
+  "expected": {
+    "operation": "model_task",
+    "expected_power_w": 1650,
+    "expected_voltage_v": 230,
+    "status": "draft",
+    "unsupported_claims_allowed": 0
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

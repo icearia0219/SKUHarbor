@@ -1,0 +1,25 @@
+{
+  "asset_metadata": {
+    "kind": "policy",
+    "provenance": "synthetic",
+    "owner_scope": "REPLACE_WITH_AUTHORIZED_WORKSPACE_JID",
+    "market": "US",
+    "locale": "en-US",
+    "product_refs": [],
+    "observed_at": "2026-11-12T00:00:00Z",
+    "effective_from": null,
+    "effective_to": null,
+    "rights_note": "Template only. Replace with authorized policy and its actual validity evidence.",
+    "version": "1",
+    "source_url": null
+  },
+  "knowledge_metadata": {
+    "id": "REPLACE_POLICY_DOCUMENT_ID",
+    "policy_id": "REPLACE_STABLE_POLICY_TOPIC_ID",
+    "product_type": "KETTLE",
+    "seller_scope": "REPLACE_SELLER_SCOPE",
+    "authority": "merchant",
+    "approval_state": "pending",
+    "version": "1"
+  }
+}

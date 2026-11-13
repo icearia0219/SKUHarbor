@@ -1,6 +1,6 @@
 # Amazon 跨境电商上新与运营 Copilot Implementation Plan
 
-> **For agentic workers:** 逐任务实施；环境有相应扩展时可使用 subagent-driven-development 或 executing-plans，缺扩展不阻塞。所有步骤用复选框记录，任务结束附实际证据。  
+> **For agentic workers:** 逐任务实施；环境有相应扩展时可使用 subagent-driven-development 或 executing-plans，缺扩展不阻塞。所有步骤用复选框记录，任务结束附实际证据。
 > 本交付是计划，不代表仓库代码、运行命令、API接入或benchmark已经完成。
 
 **Goal:** 在现有 OpenDot 中实现基于共享产品事实和适用知识的跨境电商内容/诊断工作台。
@@ -9,7 +9,7 @@
 
 **Tech Stack:** 以T0仓库核验为准；当前仅有产品PDF，无源码。下述逻辑路径必须绑定真实路径后实施，不伪造已有文件或行号。
 
-**Spec:** [ISSUE_ECOMMERCE_OPS.md](ISSUE_ECOMMERCE_OPS.md)。设计依据：[ARCHITECTURE_ECOMMERCE_OPS.md](ARCHITECTURE_ECOMMERCE_OPS.md)。统一输出：[contracts/task-result.schema.json](contracts/task-result.schema.json)。
+**Spec:** [ISSUE_ECOMMERCE_OPS.md](ISSUE_ECOMMERCE_OPS.md)。设计依据：[ARCHITECTURE_ECOMMERCE_OPS.md](ARCHITECTURE_ECOMMERCE_OPS.md)。统一输出：[contracts/task-result.schema.json](docs/ecommerce-ops/contracts/task-result.schema.json)。
 
 ## Global Constraints
 
@@ -35,41 +35,41 @@
 
 ### 1.1 T0必须定位的现有入口
 
-| 别名 | 实际绑定目标 | 修改原则 |
-|---|---|---|
-| `@BE` | 现有后端业务域下的ecommerce-ops目录 | 新增场景模块或扩展已有同职责模块 |
-| `@FE` | 现有前端feature目录下的ecommerce-ops | 复用组件/请求/状态管理 |
-| `@DB` | 现有schema与migration目录 | 沿用数据库、事务和迁移机制 |
-| `@TEST` | 项目测试根下的ecommerce-ops | 沿用实际runner，不能新建平行测试体系 |
-| `@EXEC` | 既有模型、工具、审批、持久运行与预算入口 | 新增场景注册，最小改动 |
-| `@GOAL` | 既有Goal创建/状态/证据接口 | 只做关联与结果回流 |
-| `@AUTH` | 工作区、角色和artifact访问校验 | 复用，不建新账号系统 |
-| `@STORE` | 上传、文件提取、快照与授权读取 | 支持大原文，不依赖64KiB私有文本接口 |
-| `@SEARCH` | 已有检索/全文/embedding实现 | 能复用则复用，缺省先词法方案 |
-| `@API`/`@NAV` | 后端路由及前端导航注册 | 开关控制，既有行为回归 |
-| `@CONFIG`/`@DEPLOY` | 实际配置、启动、健康与部署 | 沿用，不强制某云厂商/队列 |
+| 别名                | 实际绑定目标                             | 修改原则                             |
+| ------------------- | ---------------------------------------- | ------------------------------------ |
+| `@BE`               | 现有后端业务域下的ecommerce-ops目录      | 新增场景模块或扩展已有同职责模块     |
+| `@FE`               | 现有前端feature目录下的ecommerce-ops     | 复用组件/请求/状态管理               |
+| `@DB`               | 现有schema与migration目录                | 沿用数据库、事务和迁移机制           |
+| `@TEST`             | 项目测试根下的ecommerce-ops              | 沿用实际runner，不能新建平行测试体系 |
+| `@EXEC`             | 既有模型、工具、审批、持久运行与预算入口 | 新增场景注册，最小改动               |
+| `@GOAL`             | 既有Goal创建/状态/证据接口               | 只做关联与结果回流                   |
+| `@AUTH`             | 工作区、角色和artifact访问校验           | 复用，不建新账号系统                 |
+| `@STORE`            | 上传、文件提取、快照与授权读取           | 支持大原文，不依赖64KiB私有文本接口  |
+| `@SEARCH`           | 已有检索/全文/embedding实现              | 能复用则复用，缺省先词法方案         |
+| `@API`/`@NAV`       | 后端路由及前端导航注册                   | 开关控制，既有行为回归               |
+| `@CONFIG`/`@DEPLOY` | 实际配置、启动、健康与部署               | 沿用，不强制某云厂商/队列            |
 
 ### 1.2 拟新增代码单元（不是已存在的文件）
 
 T0将以下路径的`@...`及`<ext>`改成真实路径/语言后缀，并记录Create或Modify；已有等价职责时不得重复创建。小型模块可合并，避免无意义文件数量。
 
-| 拟定路径 | 责任 | 任务 |
-|---|---|---|
-| `@BE/domain.<ext>`、`repository.<ext>` | 产品/规则/任务/产物模型及隔离存储 | T1/T8 |
-| `@BE/ingest.<ext>`、`facts.<ext>` | 文件/报表导入、事实候选确认、来源版本 | T1 |
-| `@BE/knowledge.<ext>` | metadata过滤、检索、证据、规则快照 | T2 |
-| `@BE/contracts.<ext>`、`quality.<ext>` | JSONschema绑定、语义/证据/状态校验 | T3 |
-| `@BE/tasks/research.<ext>`、`listing.<ext>` | 候选比较与多语言Listing | T4 |
-| `@BE/tasks/ad-copy.<ext>` | 广告文案和候选词 | T5 |
-| `@BE/reports.<ext>`、`metrics.<ext>`、`tasks/ads-diagnosis.<ext>` | 导入、口径核对、代码计算和解释 | T6 |
-| `@BE/tasks/support.<ext>` | 脱敏工单/政策/订单上下文与客服草稿 | T7 |
-| `@BE/workflow.<ext>`、`review.<ext>`、`export.<ext>` | 依赖/恢复/stale/审核/导出/Goal | T8 |
-| `@BE/routes.<ext>` | 场景API，调用既有鉴权 | T8/T9 |
-| `@FE/{products,knowledge,tasks,review}.<ext>` | 产品/知识/任务/审核四个视图 | T9 |
-| `@FE/client.<ext>` | 共享类型与接口封装 | T9 |
-| `@DB/<仓库序号>_ecommerce_ops.<格式>` | 模型、索引、唯一键与兼容迁移 | T1/T8 |
-| `@TEST/{ingest,facts,knowledge,contracts,listing,ads,support,workflow,api}.test.<ext>` | 领域回归及集成 | T1–T8 |
-| `@TEST/ecommerce.e2e.<ext>` | 三条UI闭环 | T9 |
+| 拟定路径                                                                               | 责任                                  | 任务  |
+| -------------------------------------------------------------------------------------- | ------------------------------------- | ----- |
+| `@BE/domain.<ext>`、`repository.<ext>`                                                 | 产品/规则/任务/产物模型及隔离存储     | T1/T8 |
+| `@BE/ingest.<ext>`、`facts.<ext>`                                                      | 文件/报表导入、事实候选确认、来源版本 | T1    |
+| `@BE/knowledge.<ext>`                                                                  | metadata过滤、检索、证据、规则快照    | T2    |
+| `@BE/contracts.<ext>`、`quality.<ext>`                                                 | JSONschema绑定、语义/证据/状态校验    | T3    |
+| `@BE/tasks/research.<ext>`、`listing.<ext>`                                            | 候选比较与多语言Listing               | T4    |
+| `@BE/tasks/ad-copy.<ext>`                                                              | 广告文案和候选词                      | T5    |
+| `@BE/reports.<ext>`、`metrics.<ext>`、`tasks/ads-diagnosis.<ext>`                      | 导入、口径核对、代码计算和解释        | T6    |
+| `@BE/tasks/support.<ext>`                                                              | 脱敏工单/政策/订单上下文与客服草稿    | T7    |
+| `@BE/workflow.<ext>`、`review.<ext>`、`export.<ext>`                                   | 依赖/恢复/stale/审核/导出/Goal        | T8    |
+| `@BE/routes.<ext>`                                                                     | 场景API，调用既有鉴权                 | T8/T9 |
+| `@FE/{products,knowledge,tasks,review}.<ext>`                                          | 产品/知识/任务/审核四个视图           | T9    |
+| `@FE/client.<ext>`                                                                     | 共享类型与接口封装                    | T9    |
+| `@DB/<仓库序号>_ecommerce_ops.<格式>`                                                  | 模型、索引、唯一键与兼容迁移          | T1/T8 |
+| `@TEST/{ingest,facts,knowledge,contracts,listing,ads,support,workflow,api}.test.<ext>` | 领域回归及集成                        | T1–T8 |
+| `@TEST/ecommerce.e2e.<ext>`                                                            | 三条UI闭环                            | T9    |
 
 ### 1.3 固定交接路径
 
@@ -88,11 +88,11 @@ T0将以下路径的`@...`及`<ext>`改成真实路径/语言后缀，并记录C
 
 ## 2. 里程碑与依赖
 
-| 里程碑 | 任务 | 可验收产物 |
-|---|---|---|
-| M1 事实与上新 | T0–T4 | 导入产品/规则，确认事实，检索并生成US/DE Listing/候选比较；服务接口可运行 |
-| M2 运营任务 | T5–T7 | 广告文案、只读报表诊断、客服草稿，分别可触发与测试 |
-| M3 工作台交付 | T8–T11 | 版本化审核、UI、导出、benchmark、部署和培训演示 |
+| 里程碑        | 任务   | 可验收产物                                                                |
+| ------------- | ------ | ------------------------------------------------------------------------- |
+| M1 事实与上新 | T0–T4  | 导入产品/规则，确认事实，检索并生成US/DE Listing/候选比较；服务接口可运行 |
+| M2 运营任务   | T5–T7  | 广告文案、只读报表诊断、客服草稿，分别可触发与测试                        |
+| M3 工作台交付 | T8–T11 | 版本化审核、UI、导出、benchmark、部署和培训演示                           |
 
 T0 → T1 → T2/T3 → T4/T5/T6/T7 → T8 → T9 → T10 → T11。T10数据标注可提前，但正式计分调用同一业务代码；不能另写更强的benchmark专用Agent冒充产品。
 
@@ -118,6 +118,7 @@ T0 → T1 → T2/T3 → T4/T5/T6/T7 → T8 → T9 → T10 → T11。T10数据标
 **Files:** `@BE/{domain,repository,ingest,facts}.<ext>`、`@DB/...`、`@STORE`最小接入；Test `@TEST/{ingest,facts}.test.<ext>`；Create templates与fixture。
 
 **Interfaces:**
+
 - `importAssets(workspaceId, fileRefs, mapping, requestKey) -> ImportBatchResult`
 - `extractFactCandidates(assetRevision, productScope) -> FactCandidates`
 - `confirmFacts(workspaceId, productId, expectedRevision, decisions) -> ProductRevision`
@@ -138,6 +139,7 @@ T0 → T1 → T2/T3 → T4/T5/T6/T7 → T8 → T9 → T10 → T11。T10数据标
 **Files:** `@BE/knowledge.<ext>`、`@SEARCH`最小扩展、政策元数据模板；Test `@TEST/knowledge.test.<ext>`；Update data-sources。
 
 **Interfaces:**
+
 - `ingestKnowledge(assetRef, metadata) -> KnowledgeRevision`
 - `retrieveEvidence(query, {workspaceId,market,productType,sellerScope,asOf,knownAsOf}, topK=5) -> EvidenceBundle`
 - `resolvePolicy(bundle, scope) -> PolicySnapshot | PolicyConflict`。
@@ -157,6 +159,7 @@ T0 → T1 → T2/T3 → T4/T5/T6/T7 → T8 → T9 → T10 → T11。T10数据标
 **Files:** 交接schema拷入docs/ecommerce-ops/contracts；`@BE/{contracts,quality}.<ext>`；Test `@TEST/contracts.test.<ext>`。
 
 **Interfaces:**
+
 - `validateTaskResult(candidate, boundTaskContext) -> ValidatedResult | ContractErrors`
 - `validateClaims(claims, evidenceBundle, productRevision) -> ClaimCheck[]`
 - `generateTask(taskType, frozenInputs, budget) -> TaskResult`（通过现有模型入口）。
@@ -175,6 +178,7 @@ T0 → T1 → T2/T3 → T4/T5/T6/T7 → T8 → T9 → T10 → T11。T10数据标
 **Files:** `@BE/tasks/{research,listing}.<ext>`、提示词research/listing；Test `@TEST/listing.test.<ext>`。
 
 **Interfaces:**
+
 - `buildResearchBrief(candidateRefs, evidenceBundle) -> TaskResult<research_brief>`
 - `buildListingPack(productRevision, market, locale, policySnapshot, brandProfile) -> TaskResult<listing_pack>`。
 
@@ -206,6 +210,7 @@ T0 → T1 → T2/T3 → T4/T5/T6/T7 → T8 → T9 → T10 → T11。T10数据标
 **Files:** `@BE/{reports,metrics}.<ext>`、`@BE/tasks/ads-diagnosis.<ext>`、报表映射模板；Test `@TEST/ads.test.<ext>`计算部分。
 
 **Interfaces:**
+
 - `parseAdReport(assetRef, verifiedMapping, metadata) -> NormalizedAdReport | MappingErrors`
 - `validateReportScope(reportRefs) -> ComparableScope | IncomparableReasons`
 - `computeAdMetrics(rows, scope) -> ComputedMetrics`
@@ -243,6 +248,7 @@ T0 → T1 → T2/T3 → T4/T5/T6/T7 → T8 → T9 → T10 → T11。T10数据标
 **Files:** `@BE/{workflow,review,export,routes}.<ext>`、repository扩展；Modify `@EXEC/@GOAL/@AUTH/@API`必要注册点；Test `@TEST/{workflow,api}.test.<ext>`。
 
 **Interfaces:**
+
 - `startTask(request, requestKey) -> ExistingRunRef`
 - `commitArtifact(runRef, expectedInputRevision, result) -> ArtifactRevision | StaleInput`
 - `reviewArtifact(workspaceId, artifactId, expectedRevision, contentHash, decision) -> ReviewDecision`
@@ -340,20 +346,20 @@ dry-run不调用外部模型，只输出任务数/预算/凭证需求；真正�
 
 ## 4. 覆盖映射与最终自审
 
-| 需求 | 任务 | 主要验收 |
-|---|---|---|
-| FR-01 产品资料 | T1 | B01–B03/B07/B09/B23 |
-| FR-02 RAG | T2 | B04–B06/B24、Recall@5 |
-| FR-03 候选比较 | T4 | 证据差异、无销量利润预测 |
-| FR-04 Listing | T3/T4 | 两站字段/规格、部分规则声明 |
-| FR-05 广告内容 | T5 | 3组、placement、claim质检 |
-| FR-06 广告诊断 | T6 | B10–B14、指标100% |
-| FR-07 客服 | T7 | B15/B16/B23、虚构执行0 |
-| FR-08 流程审核 | T8 | B17–B21、Goal幂等回流 |
-| FR-09 结构导出 | T3/T8 | B22、同schema/版本 |
-| FR-10 UI | T9 | 3条E2E |
-| FR-11 评测 | T10 | 四任务族、AB/成本/失败/隔离 |
-| FR-12 部署培训 | T11 | 重启、备份、开关、培训与A/B/C |
+| 需求           | 任务  | 主要验收                      |
+| -------------- | ----- | ----------------------------- |
+| FR-01 产品资料 | T1    | B01–B03/B07/B09/B23           |
+| FR-02 RAG      | T2    | B04–B06/B24、Recall@5         |
+| FR-03 候选比较 | T4    | 证据差异、无销量利润预测      |
+| FR-04 Listing  | T3/T4 | 两站字段/规格、部分规则声明   |
+| FR-05 广告内容 | T5    | 3组、placement、claim质检     |
+| FR-06 广告诊断 | T6    | B10–B14、指标100%             |
+| FR-07 客服     | T7    | B15/B16/B23、虚构执行0        |
+| FR-08 流程审核 | T8    | B17–B21、Goal幂等回流         |
+| FR-09 结构导出 | T3/T8 | B22、同schema/版本            |
+| FR-10 UI       | T9    | 3条E2E                        |
+| FR-11 评测     | T10   | 四任务族、AB/成本/失败/隔离   |
+| FR-12 部署培训 | T11   | 重启、备份、开关、培训与A/B/C |
 
 自审必须检查：每个FR有实现及证据；B01–B24都有具体断言；跨任务函数/字段一致；路径全部落地；没有用fixture/静态截图替代真实端到端；没有用schema通过替代政策或事实通过。
 

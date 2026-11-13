@@ -1,0 +1,18 @@
+{
+  "case_id": "test-electric-wok-ads",
+  "family": "electric-wok",
+  "split": "test",
+  "task_type": "ad_pack",
+  "market": "DE",
+  "expected": {
+    "operation": "model_task",
+    "copies": 3,
+    "unsupported_claims_allowed": 0,
+    "status": "draft"
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

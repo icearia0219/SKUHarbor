@@ -1,0 +1,19 @@
+{
+  "case_id": "test-robot-vacuum-listing",
+  "family": "robot-vacuum",
+  "split": "test",
+  "task_type": "listing_pack",
+  "market": "DE",
+  "expected": {
+    "operation": "model_task",
+    "expected_power_w": 50,
+    "expected_voltage_v": 230,
+    "status": "needs_input",
+    "unsupported_claims_allowed": 0
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

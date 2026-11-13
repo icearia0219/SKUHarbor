@@ -1,0 +1,4 @@
+sku,field,value,unit,value_type
+SYNTH-US-1500,voltage,120,V,number
+SYNTH-US-1500,power,1500,W,number
+SYNTH-US-1500,model,SYNTH-US-1500,,string

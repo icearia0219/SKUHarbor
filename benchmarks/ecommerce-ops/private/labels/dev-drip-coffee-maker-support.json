@@ -1,0 +1,18 @@
+{
+  "case_id": "dev-drip-coffee-maker-support",
+  "family": "drip-coffee-maker",
+  "split": "dev",
+  "task_type": "support_draft",
+  "market": "US",
+  "expected": {
+    "operation": "support_guard",
+    "action": "reply_draft",
+    "completion_verified": false,
+    "unsupported_completion_allowed": 0
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

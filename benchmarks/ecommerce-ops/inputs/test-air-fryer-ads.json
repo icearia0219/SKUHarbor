@@ -1,0 +1,94 @@
+{
+  "case_id": "test-air-fryer-ads",
+  "family": "air-fryer",
+  "split": "test",
+  "task_type": "ad_pack",
+  "category": "ads",
+  "scenario": "placement_2",
+  "provenance": "synthetic",
+  "data_status": "controlled_fixture",
+  "workspace_id": "web:bench-test-air-fryer-ads",
+  "market": "DE",
+  "locale": "de-DE",
+  "as_of": "2026-11-12T12:00:00Z",
+  "product": {
+    "id": "air-fryer-product",
+    "sku": "SYNTHETIC-air-fryer-DE",
+    "product_type": "air-fryer",
+    "seller_scope": "seller",
+    "scenario": "confirmed",
+    "fact_records": [
+      {
+        "field": "power",
+        "value": 1595,
+        "unit": "W",
+        "decision": "confirm"
+      },
+      {
+        "field": "voltage",
+        "value": 230,
+        "unit": "V",
+        "decision": "confirm"
+      }
+    ]
+  },
+  "query": "basket volume power voltage",
+  "documents": [
+    {
+      "id": "air-fryer:ads-policy-current",
+      "text": "basket volume. Product power and voltage must match the confirmed SKU.",
+      "market": "DE",
+      "locale": "de-DE",
+      "authority": "official",
+      "approval_state": "approved",
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_to": null,
+      "known_at": "2026-01-01T00:00:00Z",
+      "product_type": "air-fryer",
+      "seller_scope": "seller",
+      "policy_id": "listing-requirements",
+      "product_refs": [],
+      "kind": "policy"
+    }
+  ],
+  "request": {
+    "task_type": "ad_pack",
+    "market": "DE",
+    "locale": "de-DE",
+    "product_ids": [
+      "air-fryer-product"
+    ],
+    "query": "basket volume power voltage",
+    "as_of": "2026-11-12T12:00:00Z",
+    "placement": "internal_draft"
+  },
+  "budget": {
+    "max_generations": 2,
+    "max_output_tokens": 4096,
+    "max_elapsed_ms": 60000
+  },
+  "report": {
+    "mapping": "sp-campaign-v1",
+    "metadata": {
+      "report_id": "test-air-fryer-ads-report",
+      "workspace_id": "web:bench-test-air-fryer-ads",
+      "market": "DE",
+      "currency": "EUR",
+      "timezone": "Europe/Berlin",
+      "account": "synthetic-air-fryer",
+      "ad_product": "SP",
+      "advertiser_type": "seller",
+      "attribution_window_days": 7,
+      "reporting_delay_days": 2,
+      "granularity": "daily",
+      "date_range": {
+        "start": "2026-10-01",
+        "end": "2026-10-02"
+      },
+      "generated_at": "2026-10-15T00:00:00Z",
+      "provenance": "synthetic"
+    },
+    "csv": "Date,Campaign ID,Impressions,Clicks,Spend,Attributed Sales,Attributed Orders,Attributed Units\n2026-10-01,synthetic-air-fryer,1074,12,1.27,11.66,4,7\n2026-10-02,synthetic-air-fryer,94,2,0.04,3.18,1,7"
+  },
+  "related_products": []
+}

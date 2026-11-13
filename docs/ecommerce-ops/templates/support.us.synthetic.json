@@ -1,0 +1,28 @@
+{
+  "workspace_id": "web:synthetic-demo",
+  "market": "US",
+  "locale": "en-US",
+  "as_of": "2026-11-12T10:00:00Z",
+  "ticket": {
+    "ticket_id": "synthetic-ticket-us-1",
+    "workspace_id": "web:synthetic-demo",
+    "text": "I would like to request a refund. Has it been completed?"
+  },
+  "order": {
+    "workspace_id": "web:synthetic-demo",
+    "ownership_verified": true,
+    "observed_at": "2026-11-12T08:00:00Z",
+    "valid_until": "2026-11-13T08:00:00Z",
+    "evidence_refs": ["synthetic-order-us-1"],
+    "refund": { "state": "requested" }
+  },
+  "policy": {
+    "workspace_id": "web:synthetic-demo",
+    "market": "US",
+    "approved": true,
+    "effective_from": "2026-01-01T00:00:00Z",
+    "effective_to": null,
+    "known_at": "2026-01-01T00:00:00Z",
+    "evidence_refs": ["synthetic-policy-us-1"]
+  }
+}

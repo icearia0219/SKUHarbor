@@ -42,11 +42,38 @@ export async function botHandoffHttpFixture(
   cloudEnvironment: Record<string, string> = {},
   startupTimeoutMs = 120_000,
 ) {
+  const repository = fileURLToPath(new URL('../../', import.meta.url));
+  let backendEntry = path.join(repository, 'dist/index.js');
+  const requestedEntry = process.env.OPENDOT_ECOMMERCE_BACKEND_ENTRY;
+  if (requestedEntry) {
+    const allowed = path.resolve(repository, 'artifacts/ecommerce-ops/checks');
+    let ancestor = repository;
+    for (const segment of path.relative(repository, allowed).split(path.sep)) {
+      ancestor = path.join(ancestor, segment);
+      if (fs.lstatSync(ancestor, { throwIfNoEntry: false })?.isSymbolicLink())
+        throw new Error('Invalid isolated Ecommerce backend entry');
+    }
+    const absolute = path.resolve(requestedEntry);
+    if (
+      !path.isAbsolute(requestedEntry) ||
+      !absolute.startsWith(allowed + path.sep) ||
+      !fs.existsSync(absolute)
+    )
+      throw new Error('Invalid isolated Ecommerce backend entry');
+    const actual = fs.realpathSync(absolute),
+      actualRoot = fs.realpathSync(allowed);
+    if (
+      !actual.startsWith(actualRoot + path.sep) ||
+      !fs.statSync(actual).isFile()
+    )
+      throw new Error('Invalid isolated Ecommerce backend entry');
+    backendEntry = actual;
+  }
+  // Validate an overridden entry before creating private processes or scratch data.
   // macOS resolves /var to /private/var in the child process's cwd receipt.
   const root = fs.realpathSync(
-      fs.mkdtempSync(path.join(os.tmpdir(), 'miniclaw-bot-handoff-fault-')),
-    ),
-    repository = fileURLToPath(new URL('../../', import.meta.url));
+    fs.mkdtempSync(path.join(os.tmpdir(), 'miniclaw-bot-handoff-fault-')),
+  );
   const startupMilliseconds: number[] = [];
   let port = 0,
     origin = '';
@@ -198,7 +225,7 @@ export async function botHandoffHttpFixture(
           path.join(repository, 'tests/helpers/announce-listening.mjs'),
         ).href,
         ...(preload ? ['--import', pathToFileURL(preload).href] : []),
-        path.join(repository, 'dist/index.js'),
+        backendEntry,
       ],
       {
         cwd: root,

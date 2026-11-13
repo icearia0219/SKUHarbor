@@ -1,0 +1,18 @@
+{
+  "case_id": "dev-electric-grill-support",
+  "family": "electric-grill",
+  "split": "dev",
+  "task_type": "support_draft",
+  "market": "US",
+  "expected": {
+    "operation": "support_guard",
+    "action": "needs_info",
+    "completion_verified": false,
+    "unsupported_completion_allowed": 0
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

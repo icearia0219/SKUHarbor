@@ -1,0 +1,4 @@
+sku,field,value,unit,value_type
+SYNTH-DE-2000,voltage,230,V,number
+SYNTH-DE-2000,power,2000,W,number
+SYNTH-DE-2000,model,SYNTH-DE-2000,,string

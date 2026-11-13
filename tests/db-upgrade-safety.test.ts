@@ -193,6 +193,8 @@ describe('schema version head', () => {
     // v104-v105 add scoped Group feedback and score exports.
     // v106 binds an observed trace to the committed native answer, preserving legacy rows.
     // v107 stores a sanitized terminal failure on Durable product inputs.
-    expect(db.CURRENT_SCHEMA_VERSION).toBe(107);
+    // v108 adds ecommerce objects and immutable source BLOBs on the same database.
+    // persistence.integration.test.ts verifies a real v107 backup and restoration.
+    expect(db.CURRENT_SCHEMA_VERSION).toBe(108);
   });
 });

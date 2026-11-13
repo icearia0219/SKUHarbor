@@ -1,0 +1,70 @@
+{
+  "case_id": "test-sandwich-press-facts",
+  "family": "sandwich-press",
+  "split": "test",
+  "task_type": "research_brief",
+  "category": "facts",
+  "scenario": "pending_policy",
+  "provenance": "synthetic",
+  "data_status": "controlled_fixture",
+  "workspace_id": "web:bench-test-sandwich-press-facts",
+  "market": "DE",
+  "locale": "de-DE",
+  "as_of": "2026-11-12T12:00:00Z",
+  "product": {
+    "id": "sandwich-press-product",
+    "sku": "SYNTHETIC-sandwich-press-DE",
+    "product_type": "sandwich-press",
+    "seller_scope": "seller",
+    "scenario": "confirmed",
+    "fact_records": [
+      {
+        "field": "power",
+        "value": 770,
+        "unit": "W",
+        "decision": "confirm"
+      },
+      {
+        "field": "voltage",
+        "value": 230,
+        "unit": "V",
+        "decision": "confirm"
+      }
+    ]
+  },
+  "query": "plate width power voltage",
+  "documents": [
+    {
+      "id": "sandwich-press:facts-policy-current",
+      "text": "plate width. Product power and voltage must match the confirmed SKU.",
+      "market": "DE",
+      "locale": "de-DE",
+      "authority": "official",
+      "approval_state": "pending",
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_to": null,
+      "known_at": "2026-01-01T00:00:00Z",
+      "product_type": "sandwich-press",
+      "seller_scope": "seller",
+      "policy_id": "listing-requirements",
+      "product_refs": [],
+      "kind": "policy"
+    }
+  ],
+  "request": {
+    "task_type": "research_brief",
+    "market": "DE",
+    "locale": "de-DE",
+    "product_ids": [
+      "sandwich-press-product"
+    ],
+    "query": "plate width power voltage",
+    "as_of": "2026-11-12T12:00:00Z"
+  },
+  "budget": {
+    "max_generations": 2,
+    "max_output_tokens": 4096,
+    "max_elapsed_ms": 60000
+  },
+  "related_products": []
+}

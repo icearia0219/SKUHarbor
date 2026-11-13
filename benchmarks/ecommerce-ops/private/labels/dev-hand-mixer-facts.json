@@ -1,0 +1,20 @@
+{
+  "case_id": "dev-hand-mixer-facts",
+  "family": "hand-mixer",
+  "split": "dev",
+  "task_type": "research_brief",
+  "market": "US",
+  "expected": {
+    "operation": "retrieval",
+    "relevant_document_ids": [
+      "hand-mixer:facts-policy-current",
+      "hand-mixer:facts-experience"
+    ],
+    "policy_status": "resolved"
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

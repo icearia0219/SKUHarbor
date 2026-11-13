@@ -1,0 +1,70 @@
+{
+  "case_id": "dev-food-dehydrator-listing",
+  "family": "food-dehydrator",
+  "split": "dev",
+  "task_type": "listing_pack",
+  "category": "listing",
+  "scenario": "pending_fact",
+  "provenance": "synthetic",
+  "data_status": "controlled_fixture",
+  "workspace_id": "web:bench-dev-food-dehydrator-listing",
+  "market": "US",
+  "locale": "en-US",
+  "as_of": "2026-11-12T12:00:00Z",
+  "product": {
+    "id": "food-dehydrator-product",
+    "sku": "SYNTHETIC-food-dehydrator-US",
+    "product_type": "food-dehydrator",
+    "seller_scope": "seller",
+    "scenario": "pending_fact",
+    "fact_records": [
+      {
+        "field": "power",
+        "value": 350,
+        "unit": "W",
+        "decision": "pending"
+      },
+      {
+        "field": "voltage",
+        "value": 120,
+        "unit": "V",
+        "decision": "pending"
+      }
+    ]
+  },
+  "query": "tray count power voltage",
+  "documents": [
+    {
+      "id": "food-dehydrator:listing-policy-current",
+      "text": "tray count. Product power and voltage must match the confirmed SKU.",
+      "market": "US",
+      "locale": "en-US",
+      "authority": "official",
+      "approval_state": "approved",
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_to": null,
+      "known_at": "2026-01-01T00:00:00Z",
+      "product_type": "food-dehydrator",
+      "seller_scope": "seller",
+      "policy_id": "listing-requirements",
+      "product_refs": [],
+      "kind": "policy"
+    }
+  ],
+  "request": {
+    "task_type": "listing_pack",
+    "market": "US",
+    "locale": "en-US",
+    "product_ids": [
+      "food-dehydrator-product"
+    ],
+    "query": "tray count power voltage",
+    "as_of": "2026-11-12T12:00:00Z"
+  },
+  "budget": {
+    "max_generations": 2,
+    "max_output_tokens": 4096,
+    "max_elapsed_ms": 60000
+  },
+  "related_products": []
+}

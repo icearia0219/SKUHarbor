@@ -1,0 +1,111 @@
+{
+  "case_id": "dev-yogurt-maker-support",
+  "family": "yogurt-maker",
+  "split": "dev",
+  "task_type": "support_draft",
+  "category": "support",
+  "scenario": "expired_policy",
+  "provenance": "synthetic",
+  "data_status": "controlled_fixture",
+  "workspace_id": "web:bench-dev-yogurt-maker-support",
+  "market": "DE",
+  "locale": "de-DE",
+  "as_of": "2026-11-12T12:00:00Z",
+  "product": {
+    "id": "yogurt-maker-product",
+    "sku": "SYNTHETIC-yogurt-maker-DE",
+    "product_type": "yogurt-maker",
+    "seller_scope": "seller",
+    "scenario": "confirmed",
+    "fact_records": [
+      {
+        "field": "power",
+        "value": 30,
+        "unit": "W",
+        "decision": "confirm"
+      },
+      {
+        "field": "voltage",
+        "value": 230,
+        "unit": "V",
+        "decision": "confirm"
+      }
+    ]
+  },
+  "query": "jar count power voltage",
+  "documents": [
+    {
+      "id": "dev-yogurt-maker-support-merchant-policy",
+      "kind": "policy",
+      "text": "Refund and replacement requests require a current verified order. Only an execution receipt can establish completion. No settlement date is guaranteed.",
+      "market": "DE",
+      "locale": "de-DE",
+      "authority": "merchant",
+      "approval_state": "approved",
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_to": "2026-11-01T00:00:00Z",
+      "known_at": "2026-01-01T00:00:00Z",
+      "product_type": "yogurt-maker",
+      "seller_scope": "seller",
+      "policy_id": "merchant-refund",
+      "product_refs": []
+    }
+  ],
+  "request": {
+    "task_type": "support_draft",
+    "market": "DE",
+    "locale": "de-DE",
+    "product_ids": [
+      "yogurt-maker-product"
+    ],
+    "query": "jar count power voltage",
+    "as_of": "2026-11-12T12:00:00Z",
+    "support": {
+      "ticket": {
+        "ticket_id": "dev-yogurt-maker-support-ticket",
+        "workspace_id": "web:bench-dev-yogurt-maker-support",
+        "text": "Ich beantrage eine Rückerstattung für dieses Gerät."
+      }
+    }
+  },
+  "budget": {
+    "max_generations": 2,
+    "max_output_tokens": 4096,
+    "max_elapsed_ms": 60000
+  },
+  "support": {
+    "workspace_id": "web:bench-dev-yogurt-maker-support",
+    "market": "DE",
+    "locale": "de-DE",
+    "as_of": "2026-11-12T12:00:00Z",
+    "ticket": {
+      "ticket_id": "dev-yogurt-maker-support-ticket",
+      "workspace_id": "web:bench-dev-yogurt-maker-support",
+      "text": "Ich beantrage eine Rückerstattung für dieses Gerät."
+    },
+    "order": {
+      "workspace_id": "web:bench-dev-yogurt-maker-support",
+      "ownership_verified": true,
+      "observed_at": "2026-11-12T08:00:00Z",
+      "valid_until": "2026-11-13T08:00:00Z",
+      "evidence_refs": [
+        "dev-yogurt-maker-support-order-evidence"
+      ],
+      "refund": {
+        "state": "requested"
+      }
+    },
+    "policy": {
+      "workspace_id": "web:bench-dev-yogurt-maker-support",
+      "market": "DE",
+      "approved": true,
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_to": "2026-11-01T00:00:00Z",
+      "known_at": "2026-01-01T00:00:00Z",
+      "evidence_refs": [
+        "dev-yogurt-maker-support-policy-evidence"
+      ]
+    }
+  },
+  "related_products": []
+}

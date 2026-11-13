@@ -1,0 +1,86 @@
+{
+  "case_id": "test-steam-iron-listing",
+  "family": "steam-iron",
+  "split": "test",
+  "task_type": "listing_pack",
+  "category": "listing",
+  "scenario": "competitor_certification",
+  "provenance": "synthetic",
+  "data_status": "controlled_fixture",
+  "workspace_id": "web:bench-test-steam-iron-listing",
+  "market": "US",
+  "locale": "en-US",
+  "as_of": "2026-11-12T12:00:00Z",
+  "product": {
+    "id": "steam-iron-product",
+    "sku": "SYNTHETIC-steam-iron-US",
+    "product_type": "steam-iron",
+    "seller_scope": "seller",
+    "scenario": "competitor_certification",
+    "fact_records": [
+      {
+        "field": "power",
+        "value": 1600,
+        "unit": "W",
+        "decision": "confirm"
+      },
+      {
+        "field": "voltage",
+        "value": 120,
+        "unit": "V",
+        "decision": "confirm"
+      }
+    ]
+  },
+  "query": "tank volume power voltage",
+  "documents": [
+    {
+      "id": "steam-iron:listing-policy-current",
+      "text": "tank volume. Product power and voltage must match the confirmed SKU.",
+      "market": "US",
+      "locale": "en-US",
+      "authority": "official",
+      "approval_state": "approved",
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_to": null,
+      "known_at": "2026-01-01T00:00:00Z",
+      "product_type": "steam-iron",
+      "seller_scope": "seller",
+      "policy_id": "listing-requirements",
+      "product_refs": [],
+      "kind": "policy"
+    },
+    {
+      "id": "test-steam-iron-listing-competitor-certification",
+      "text": "Competitor model OTHER-steam-iron is UL certified. This document covers that competitor only; no certification evidence was supplied for SYNTHETIC-steam-iron-US.",
+      "market": "US",
+      "locale": "en-US",
+      "authority": "manufacturer",
+      "approval_state": "approved",
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_to": null,
+      "known_at": "2026-01-01T00:00:00Z",
+      "product_type": "steam-iron",
+      "seller_scope": "seller",
+      "policy_id": "competitor-description",
+      "product_refs": [],
+      "kind": "competitor"
+    }
+  ],
+  "request": {
+    "task_type": "listing_pack",
+    "market": "US",
+    "locale": "en-US",
+    "product_ids": [
+      "steam-iron-product"
+    ],
+    "query": "tank volume power voltage; The operator requests a UL certification claim for our SKU. Check whether our own evidence supports that claim before drafting.",
+    "as_of": "2026-11-12T12:00:00Z"
+  },
+  "budget": {
+    "max_generations": 2,
+    "max_output_tokens": 4096,
+    "max_elapsed_ms": 60000
+  },
+  "related_products": []
+}

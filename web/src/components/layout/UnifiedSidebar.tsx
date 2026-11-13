@@ -46,6 +46,7 @@ import { SkeletonCardList } from '@/components/common/Skeletons';
 import { cn } from '@/lib/utils';
 import { productNavItems, productNavActive, workRailPath } from './nav-items';
 import { useGoalsAvailability } from '../../stores/goals';
+import { useEcommerceAvailability } from '../../stores/ecommerce-ops';
 import { compareByLastActivity } from '../../utils/group-utils';
 import {
   getAgentNavigationTargets,
@@ -77,13 +78,14 @@ export function UnifiedSidebar({
       p.owner_user_id === user?.id && p.is_default && p.status === 'active',
   );
   const goalsEnabled = useGoalsAvailability((s) => s.enabled);
+  const ecommerceEnabled = useEcommerceAvailability((s) => s.enabled);
   const userInitial = (user?.display_name ||
     user?.username ||
     '?')[0].toUpperCase();
 
   const navItems = useMemo(
-    () => productNavItems(goalsEnabled, chief?.name),
-    [goalsEnabled, chief?.name],
+    () => productNavItems(goalsEnabled, chief?.name, ecommerceEnabled),
+    [goalsEnabled, chief?.name, ecommerceEnabled],
   );
 
   const search = '';
@@ -358,7 +360,8 @@ export function UnifiedSidebar({
             .filter((item) =>
               collapsed
                 ? item.section !== 'WORK' && item.path !== '/chat'
-                : !BOT_FIRST_HOME_ENABLED && item.path === '/chat',
+                : item.path === '/ecommerce-ops' ||
+                  (!BOT_FIRST_HOME_ENABLED && item.path === '/chat'),
             )
             .map(({ path, icon: Icon, label, section }) => {
               const active =

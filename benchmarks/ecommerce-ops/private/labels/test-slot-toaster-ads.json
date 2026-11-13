@@ -1,0 +1,30 @@
+{
+  "case_id": "test-slot-toaster-ads",
+  "family": "slot-toaster",
+  "split": "test",
+  "task_type": "ads_diagnosis",
+  "market": "US",
+  "expected": {
+    "operation": "metrics",
+    "metrics": {
+      "currency": "USD",
+      "impressions": 1124,
+      "clicks": 12,
+      "spend_minor": 117,
+      "attributed_sales_minor": 1392,
+      "attributed_orders": 4,
+      "acos_ratio": 0.08405172413793104,
+      "roas": 11.897435897435898,
+      "ctr_ratio": 0.010676156583629894,
+      "cpc_minor": 9.75,
+      "cvr_ratio": 0.3333333333333333
+    },
+    "maturity": "complete",
+    "allow_negative_targeting": false
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

@@ -1,0 +1,83 @@
+{
+  "case_id": "test-steam-mop-support",
+  "family": "steam-mop",
+  "split": "test",
+  "task_type": "support_draft",
+  "category": "support",
+  "scenario": "missing_policy",
+  "provenance": "synthetic",
+  "data_status": "controlled_fixture",
+  "workspace_id": "web:bench-test-steam-mop-support",
+  "market": "US",
+  "locale": "en-US",
+  "as_of": "2026-11-12T12:00:00Z",
+  "product": {
+    "id": "steam-mop-product",
+    "sku": "SYNTHETIC-steam-mop-US",
+    "product_type": "steam-mop",
+    "seller_scope": "seller",
+    "scenario": "confirmed",
+    "fact_records": [
+      {
+        "field": "power",
+        "value": 1100,
+        "unit": "W",
+        "decision": "confirm"
+      },
+      {
+        "field": "voltage",
+        "value": 120,
+        "unit": "V",
+        "decision": "confirm"
+      }
+    ]
+  },
+  "query": "cable length power voltage",
+  "documents": [],
+  "request": {
+    "task_type": "support_draft",
+    "market": "US",
+    "locale": "en-US",
+    "product_ids": [
+      "steam-mop-product"
+    ],
+    "query": "cable length power voltage",
+    "as_of": "2026-11-12T12:00:00Z",
+    "support": {
+      "ticket": {
+        "ticket_id": "test-steam-mop-support-ticket",
+        "workspace_id": "web:bench-test-steam-mop-support",
+        "text": "I request a refund for this appliance."
+      }
+    }
+  },
+  "budget": {
+    "max_generations": 2,
+    "max_output_tokens": 4096,
+    "max_elapsed_ms": 60000
+  },
+  "support": {
+    "workspace_id": "web:bench-test-steam-mop-support",
+    "market": "US",
+    "locale": "en-US",
+    "as_of": "2026-11-12T12:00:00Z",
+    "ticket": {
+      "ticket_id": "test-steam-mop-support-ticket",
+      "workspace_id": "web:bench-test-steam-mop-support",
+      "text": "I request a refund for this appliance."
+    },
+    "order": {
+      "workspace_id": "web:bench-test-steam-mop-support",
+      "ownership_verified": true,
+      "observed_at": "2026-11-12T08:00:00Z",
+      "valid_until": "2026-11-13T08:00:00Z",
+      "evidence_refs": [
+        "test-steam-mop-support-order-evidence"
+      ],
+      "refund": {
+        "state": "requested"
+      }
+    }
+  },
+  "related_products": []
+}

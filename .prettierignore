@@ -1,0 +1,9 @@
+# Frozen benchmark byte hashes and private gold must not be rewritten by a
+# formatting pass. Revise these only through an explicit dataset version.
+benchmarks/ecommerce-ops/inputs/
+benchmarks/ecommerce-ops/private/
+benchmarks/ecommerce-ops/manifest.json
+benchmarks/ecommerce-ops/faults.json
+
+# These instructions have recorded prompt hashes in the retained A/B runs.
+docs/ecommerce-ops/prompts/

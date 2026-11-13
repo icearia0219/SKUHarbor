@@ -1,0 +1,30 @@
+{
+  "case_id": "validation-milk-frother-ads",
+  "family": "milk-frother",
+  "split": "validation",
+  "task_type": "ads_diagnosis",
+  "market": "DE",
+  "expected": {
+    "operation": "metrics",
+    "metrics": {
+      "currency": "EUR",
+      "impressions": 1212,
+      "clicks": 13,
+      "spend_minor": 145,
+      "attributed_sales_minor": 0,
+      "attributed_orders": 0,
+      "acos_ratio": null,
+      "roas": 0,
+      "ctr_ratio": 0.010726072607260726,
+      "cpc_minor": 11.153846153846153,
+      "cvr_ratio": 0
+    },
+    "maturity": "complete",
+    "allow_negative_targeting": false
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

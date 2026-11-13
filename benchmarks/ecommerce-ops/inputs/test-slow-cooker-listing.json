@@ -1,0 +1,64 @@
+{
+  "case_id": "test-slow-cooker-listing",
+  "family": "slow-cooker",
+  "split": "test",
+  "task_type": "listing_pack",
+  "category": "listing",
+  "scenario": "missing_voltage",
+  "provenance": "synthetic",
+  "data_status": "controlled_fixture",
+  "workspace_id": "web:bench-test-slow-cooker-listing",
+  "market": "US",
+  "locale": "en-US",
+  "as_of": "2026-11-12T12:00:00Z",
+  "product": {
+    "id": "slow-cooker-product",
+    "sku": "SYNTHETIC-slow-cooker-US",
+    "product_type": "slow-cooker",
+    "seller_scope": "seller",
+    "scenario": "missing_voltage",
+    "fact_records": [
+      {
+        "field": "power",
+        "value": 220,
+        "unit": "W",
+        "decision": "confirm"
+      }
+    ]
+  },
+  "query": "pot volume power voltage",
+  "documents": [
+    {
+      "id": "slow-cooker:listing-policy-current",
+      "text": "pot volume. Product power and voltage must match the confirmed SKU.",
+      "market": "US",
+      "locale": "en-US",
+      "authority": "official",
+      "approval_state": "approved",
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_to": null,
+      "known_at": "2026-01-01T00:00:00Z",
+      "product_type": "slow-cooker",
+      "seller_scope": "seller",
+      "policy_id": "listing-requirements",
+      "product_refs": [],
+      "kind": "policy"
+    }
+  ],
+  "request": {
+    "task_type": "listing_pack",
+    "market": "US",
+    "locale": "en-US",
+    "product_ids": [
+      "slow-cooker-product"
+    ],
+    "query": "pot volume power voltage",
+    "as_of": "2026-11-12T12:00:00Z"
+  },
+  "budget": {
+    "max_generations": 2,
+    "max_output_tokens": 4096,
+    "max_elapsed_ms": 60000
+  },
+  "related_products": []
+}

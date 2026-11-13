@@ -1,0 +1,70 @@
+{
+  "case_id": "validation-egg-cooker-facts",
+  "family": "egg-cooker",
+  "split": "validation",
+  "task_type": "research_brief",
+  "category": "facts",
+  "scenario": "expired_policy",
+  "provenance": "synthetic",
+  "data_status": "controlled_fixture",
+  "workspace_id": "web:bench-validation-egg-cooker-facts",
+  "market": "DE",
+  "locale": "de-DE",
+  "as_of": "2026-11-12T12:00:00Z",
+  "product": {
+    "id": "egg-cooker-product",
+    "sku": "SYNTHETIC-egg-cooker-DE",
+    "product_type": "egg-cooker",
+    "seller_scope": "seller",
+    "scenario": "confirmed",
+    "fact_records": [
+      {
+        "field": "power",
+        "value": 440,
+        "unit": "W",
+        "decision": "confirm"
+      },
+      {
+        "field": "voltage",
+        "value": 230,
+        "unit": "V",
+        "decision": "confirm"
+      }
+    ]
+  },
+  "query": "egg capacity power voltage",
+  "documents": [
+    {
+      "id": "egg-cooker:facts-policy-current",
+      "text": "egg capacity. Product power and voltage must match the confirmed SKU.",
+      "market": "DE",
+      "locale": "de-DE",
+      "authority": "official",
+      "approval_state": "approved",
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_to": "2026-11-01T00:00:00Z",
+      "known_at": "2026-01-01T00:00:00Z",
+      "product_type": "egg-cooker",
+      "seller_scope": "seller",
+      "policy_id": "listing-requirements",
+      "product_refs": [],
+      "kind": "policy"
+    }
+  ],
+  "request": {
+    "task_type": "research_brief",
+    "market": "DE",
+    "locale": "de-DE",
+    "product_ids": [
+      "egg-cooker-product"
+    ],
+    "query": "egg capacity power voltage",
+    "as_of": "2026-11-12T12:00:00Z"
+  },
+  "budget": {
+    "max_generations": 2,
+    "max_output_tokens": 4096,
+    "max_elapsed_ms": 60000
+  },
+  "related_products": []
+}

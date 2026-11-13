@@ -338,3 +338,21 @@ npm run desktop:build
 ## License
 
 OpenDot 使用 MIT License，详见 [`LICENSE`](LICENSE)。
+
+## 电商运营 P0（可选）
+
+新增中文工作台 `/ecommerce-ops`，支持 Amazon US / DE 的候选资料比较、Listing、三组广告内容、导入 SP 报表只读诊断及客服草稿。共享已确认 SKU 事实、适用规则和可定位证据；人工修改/审核绑定确切版本，导出 JSON/Markdown，广告指标另有 CSV。默认 `OPENDOT_ECOMMERCE_OPS=false`，开启后登录并选择自己的现有工作区；沿用同一 OpenDot 服务。需要人工 Goal 跟进时另启用既有 `MINICLAW_PERSONAL_GOALS=true`，其预算为一次、需手动推进。
+
+所有内容为待审内部草稿；不执行平台上架、改价/竞价/预算、退款、补发或发送客服消息。P0 采用授权文件导入，SP-API / Ads API 为 P1 未接入。US/DE 使用各自 SKU、规格与规则；人工审核订单导入不等于平台回执。CSV/JSON/DOCX 已做工程验证，PDF 需 pdftotext，本机实际 PDF 二进制尚未验证。
+
+在项目根目录 PowerShell 开启：
+
+```powershell
+npm run build:all
+$env:OPENDOT_ECOMMERCE_OPS='true'
+npm run start:windows
+```
+
+验证入口为 `node scripts/ecommerce-check.mjs all`；演示为 `node scripts/ecommerce-demo.mjs --workspace demo-ecommerce --reset --scenario launch-us-de`。reset 仅允许标记的 demo workspace；真实数据/已有服务不作为测试环境。
+
+安装、模型数据流、备份/恢复与关闭开关见 [部署说明](docs/ecommerce-ops/deployment.md)；操作见 [SOP](docs/ecommerce-ops/sop.md) 与 [培训](docs/ecommerce-ops/training.md)；实现见 [仓库映射](docs/ecommerce-ops/repo-map.md)；实际测试/失败、benchmark、真实模型与逐模块 A/B/C 状态见 [验收记录](docs/ecommerce-ops/acceptance.md)。目前整体 A/B/C 尚未全部验收，fixture smoke 不代表真实业务效果。

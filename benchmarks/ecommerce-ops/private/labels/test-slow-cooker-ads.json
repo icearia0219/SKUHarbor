@@ -1,0 +1,30 @@
+{
+  "case_id": "test-slow-cooker-ads",
+  "family": "slow-cooker",
+  "split": "test",
+  "task_type": "ads_diagnosis",
+  "market": "US",
+  "expected": {
+    "operation": "metrics",
+    "metrics": {
+      "currency": "USD",
+      "impressions": 1476,
+      "clicks": 19,
+      "spend_minor": 229,
+      "attributed_sales_minor": 1747,
+      "attributed_orders": 3,
+      "acos_ratio": 0.13108185460789926,
+      "roas": 7.62882096069869,
+      "ctr_ratio": 0.012872628726287264,
+      "cpc_minor": 12.052631578947368,
+      "cvr_ratio": 0.15789473684210525
+    },
+    "maturity": "unknown",
+    "allow_negative_targeting": false
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

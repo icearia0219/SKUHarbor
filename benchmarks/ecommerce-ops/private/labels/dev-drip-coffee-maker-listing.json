@@ -1,0 +1,19 @@
+{
+  "case_id": "dev-drip-coffee-maker-listing",
+  "family": "drip-coffee-maker",
+  "split": "dev",
+  "task_type": "listing_pack",
+  "market": "DE",
+  "expected": {
+    "operation": "model_task",
+    "expected_power_w": 990,
+    "expected_voltage_v": 230,
+    "status": "draft",
+    "unsupported_claims_allowed": 0
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

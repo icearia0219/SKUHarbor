@@ -1,0 +1,19 @@
+{
+  "case_id": "dev-drip-coffee-maker-facts",
+  "family": "drip-coffee-maker",
+  "split": "dev",
+  "task_type": "research_brief",
+  "market": "US",
+  "expected": {
+    "operation": "retrieval",
+    "relevant_document_ids": [
+      "drip-coffee-maker:facts-policy-current"
+    ],
+    "policy_status": "resolved"
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

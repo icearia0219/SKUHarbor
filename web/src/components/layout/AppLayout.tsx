@@ -20,6 +20,7 @@ import { useChatStore } from '../../stores/chat';
 import { useAuthStore } from '../../stores/auth';
 import { ErrorBoundary } from '../common/ErrorBoundary';
 import { useGoalsAvailability } from '../../stores/goals';
+import { useEcommerceAvailability } from '../../stores/ecommerce-ops';
 import { PocketPanel } from '../../features/pocket/PocketPanel';
 import { ProductContextProvider, ContextPanelOutlet } from './ContextPanel';
 import { BOT_FIRST_HOME_ENABLED } from '../../utils/bot-first';
@@ -40,6 +41,17 @@ export function AppLayout() {
   useTheme(); // 应用并同步持久化的主题偏好
   useRouteRestore(); // PWA 重启时恢复上次访问的路由（默认关闭，设置中启用）
   const loadGoalAvailability = useGoalsAvailability((state) => state.load);
+  const loadEcommerceAvailability = useEcommerceAvailability(
+    (state) => state.load,
+  );
+  const ecommerceEnabled = useEcommerceAvailability((state) => state.enabled);
+  useEffect(() => {
+    void loadEcommerceAvailability(owner ?? '');
+    return wsManager.on(
+      'connected',
+      () => void loadEcommerceAvailability(owner ?? ''),
+    );
+  }, [owner, loadEcommerceAvailability]);
   useEffect(() => {
     void loadGoalAvailability();
   }, [loadGoalAvailability]);
@@ -231,6 +243,19 @@ export function AppLayout() {
                   </header>
                 )}
               <ConnectionBanner />
+              {ecommerceEnabled && !isChatRoute && !isGroupThread && (
+                <nav
+                  aria-label="工作台入口"
+                  className="flex justify-end px-4 py-2 md:hidden"
+                >
+                  <Link
+                    className="min-h-11 rounded-lg px-3 py-3 text-sm text-primary hover:bg-muted"
+                    to="/ecommerce-ops"
+                  >
+                    电商运营
+                  </Link>
+                </nav>
+              )}
               <PocketPanel />
               <main
                 id="main-content"

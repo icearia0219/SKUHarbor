@@ -1,0 +1,30 @@
+{
+  "case_id": "test-sandwich-press-ads",
+  "family": "sandwich-press",
+  "split": "test",
+  "task_type": "ads_diagnosis",
+  "market": "US",
+  "expected": {
+    "operation": "metrics",
+    "metrics": {
+      "currency": "USD",
+      "impressions": 1300,
+      "clicks": 0,
+      "spend_minor": 173,
+      "attributed_sales_minor": 1760,
+      "attributed_orders": 0,
+      "acos_ratio": 0.09829545454545455,
+      "roas": 10.173410404624278,
+      "ctr_ratio": 0,
+      "cpc_minor": null,
+      "cvr_ratio": null
+    },
+    "maturity": "complete",
+    "allow_negative_targeting": false
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

@@ -1,0 +1,70 @@
+{
+  "case_id": "test-electric-wok-listing",
+  "family": "electric-wok",
+  "split": "test",
+  "task_type": "listing_pack",
+  "category": "listing",
+  "scenario": "expired_rule",
+  "provenance": "synthetic",
+  "data_status": "controlled_fixture",
+  "workspace_id": "web:bench-test-electric-wok-listing",
+  "market": "DE",
+  "locale": "de-DE",
+  "as_of": "2026-11-12T12:00:00Z",
+  "product": {
+    "id": "electric-wok-product",
+    "sku": "SYNTHETIC-electric-wok-DE",
+    "product_type": "electric-wok",
+    "seller_scope": "seller",
+    "scenario": "expired_rule",
+    "fact_records": [
+      {
+        "field": "power",
+        "value": 1540,
+        "unit": "W",
+        "decision": "confirm"
+      },
+      {
+        "field": "voltage",
+        "value": 230,
+        "unit": "V",
+        "decision": "confirm"
+      }
+    ]
+  },
+  "query": "pan diameter power voltage",
+  "documents": [
+    {
+      "id": "electric-wok:listing-policy-current",
+      "text": "pan diameter. Product power and voltage must match the confirmed SKU.",
+      "market": "DE",
+      "locale": "de-DE",
+      "authority": "official",
+      "approval_state": "approved",
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_to": "2026-11-01T00:00:00Z",
+      "known_at": "2026-01-01T00:00:00Z",
+      "product_type": "electric-wok",
+      "seller_scope": "seller",
+      "policy_id": "listing-requirements",
+      "product_refs": [],
+      "kind": "policy"
+    }
+  ],
+  "request": {
+    "task_type": "listing_pack",
+    "market": "DE",
+    "locale": "de-DE",
+    "product_ids": [
+      "electric-wok-product"
+    ],
+    "query": "pan diameter power voltage",
+    "as_of": "2026-11-12T12:00:00Z"
+  },
+  "budget": {
+    "max_generations": 2,
+    "max_output_tokens": 4096,
+    "max_elapsed_ms": 60000
+  },
+  "related_products": []
+}

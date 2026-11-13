@@ -1,0 +1,19 @@
+{
+  "case_id": "validation-coffee-grinder-facts",
+  "family": "coffee-grinder",
+  "split": "validation",
+  "task_type": "research_brief",
+  "market": "US",
+  "expected": {
+    "operation": "retrieval",
+    "relevant_document_ids": [
+      "coffee-grinder:facts-policy-current"
+    ],
+    "policy_status": "resolved"
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

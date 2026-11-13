@@ -1,0 +1,20 @@
+{
+  "case_id": "dev-electric-grill-facts",
+  "family": "electric-grill",
+  "split": "dev",
+  "task_type": "research_brief",
+  "market": "US",
+  "expected": {
+    "operation": "retrieval",
+    "relevant_document_ids": [
+      "electric-grill:facts-policy-current",
+      "electric-grill:facts-policy-overlap"
+    ],
+    "policy_status": "conflict"
+  },
+  "human_review": {
+    "reviewers": [],
+    "status": "not_reviewed"
+  },
+  "provenance": "synthetic"
+}

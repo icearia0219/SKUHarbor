@@ -1,0 +1,53 @@
+{
+  "case_id": "dev-electric-grill-listing",
+  "family": "electric-grill",
+  "split": "dev",
+  "task_type": "listing_pack",
+  "category": "listing",
+  "scenario": "unknown_policy",
+  "provenance": "synthetic",
+  "data_status": "controlled_fixture",
+  "workspace_id": "web:bench-dev-electric-grill-listing",
+  "market": "DE",
+  "locale": "de-DE",
+  "as_of": "2026-11-12T12:00:00Z",
+  "product": {
+    "id": "electric-grill-product",
+    "sku": "SYNTHETIC-electric-grill-DE",
+    "product_type": "electric-grill",
+    "seller_scope": "seller",
+    "scenario": "unknown_policy",
+    "fact_records": [
+      {
+        "field": "power",
+        "value": 1760,
+        "unit": "W",
+        "decision": "confirm"
+      },
+      {
+        "field": "voltage",
+        "value": 230,
+        "unit": "V",
+        "decision": "confirm"
+      }
+    ]
+  },
+  "query": "grill area power voltage",
+  "documents": [],
+  "request": {
+    "task_type": "listing_pack",
+    "market": "DE",
+    "locale": "de-DE",
+    "product_ids": [
+      "electric-grill-product"
+    ],
+    "query": "grill area power voltage",
+    "as_of": "2026-11-12T12:00:00Z"
+  },
+  "budget": {
+    "max_generations": 2,
+    "max_output_tokens": 4096,
+    "max_elapsed_ms": 60000
+  },
+  "related_products": []
+}

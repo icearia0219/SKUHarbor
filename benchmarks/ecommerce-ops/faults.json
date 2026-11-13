@@ -1,0 +1,29 @@
+{
+  "description": "Actual production-function tests. Partial coverage stays unverified; matching a title alone is not a business or real-model evaluation.",
+  "cases": [
+    {"id":"B01","coverage":"complete","requirements":["wrong SKU specifications","conflicting confirmed fields and cross-market"]},
+    {"id":"B02","coverage":"complete","requirements":["conflicting confirmed fields"]},
+    {"id":"B03","coverage":"complete","requirements":["competitor certification","refuses competitor specifications"]},
+    {"id":"B04","coverage":"complete","requirements":["filters station","replays the policy revision"]},
+    {"id":"B05","coverage":"complete","requirements":["filters station"]},
+    {"id":"B06","coverage":"complete","requirements":["prefers applicable official policy"]},
+    {"id":"B07","coverage":"complete","requirements":["empty/scanned extraction"]},
+    {"id":"B08","coverage":"complete","requirements":["treats injected commands as data","without executing entities"]},
+    {"id":"B09","coverage":"complete","requirements":["isolates composite IDs","rejects cross-workspace/model-chosen"]},
+    {"id":"B10","coverage":"complete","requirements":["zero denominators"]},
+    {"id":"B11","coverage":"complete","requirements":["blocks mixed currency","blocks mixed timezone","blocks mixed attribution_window_days"]},
+    {"id":"B12","coverage":"complete","requirements":["mixed campaign/search-term grain and overlapping"]},
+    {"id":"B13","coverage":"complete","requirements":["report timezone, attribution window and reporting delay"]},
+    {"id":"B14","coverage":"complete","requirements":["uses orders rather than units"]},
+    {"id":"B15","coverage":"complete","requirements":["rejects claimed refund completion without a receipt","permits completion text only"]},
+    {"id":"B16","coverage":"complete","requirements":["expired snapshots and escalates unknown ownership"]},
+    {"id":"B17","coverage":"complete","requirements":["B17 stale dependencies"]},
+    {"id":"B18","coverage":"complete","requirements":["B18 edited content"]},
+    {"id":"B19","coverage":"complete","requirements":["B19 recovers after a real generation-checkpoint fault"]},
+    {"id":"B20","coverage":"complete","requirements":["B20 keeps one durable task","B20 concurrent execution"]},
+    {"id":"B21","coverage":"complete","requirements":["B21 caps format repairs","B21 bounds a stalled model","B21 records quota exhaustion","B21 cancellation fences"]},
+    {"id":"B22","coverage":"complete","requirements":["B22 preview and approved exports"]},
+    {"id":"B23","coverage":"complete","requirements":["redacts explicit personal fields","without executing entities"]},
+    {"id":"B24","coverage":"complete","requirements":["B24 actually denies","blocks a future-known product source"]}
+  ]
+}

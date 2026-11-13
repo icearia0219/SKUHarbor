@@ -4,9 +4,13 @@
 
 ## Windows 本地启动
 
+安装依赖和启动必须使用相同的 Node 大版本。当前这台机器的 `better-sqlite3` 已为 Node 24.15.0（ABI 137）安装；Node 22（ABI 127）会报 `ERR_DLOPEN_FAILED`。已在 Windows PowerShell 5.1 中验证 Node 24 可打开内存 SQLite，没有访问用户业务数据库。以下 PATH 调整仅作用于当前终端窗口，其他机器应改成自己的 Node 安装目录。
+
 在项目根目录 PowerShell：
 
 ```powershell
+$env:Path = 'C:\Users\17495\AppData\Local\nvm\v24.15.0;' + $env:Path
+node --version # 本机应显示 v24.15.0
 npm run build:all
 $env:OPENDOT_ECOMMERCE_OPS='true'
 npm run start:windows

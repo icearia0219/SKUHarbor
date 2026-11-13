@@ -14,12 +14,14 @@ US/en-US/USD 与 DE/de-DE/EUR 分开；Listing/ad/support 每次绑定一个 SKU
 
 ```powershell
 Set-Location 'D:\opendot\OpenDot-main-0689098\OpenDot'
+$env:Path = 'C:\Users\17495\AppData\Local\nvm\v24.15.0;' + $env:Path
+node --version # 本机应显示 v24.15.0，与已安装的原生依赖一致
 npm run build:all
 $env:OPENDOT_ECOMMERCE_OPS='true'
 npm run start:windows
 ```
 
-登录后选择自己的现有工作区，从侧栏进入“电商运营”。人工 Goal 另需既有 `MINICLAW_PERSONAL_GOALS=true`；未启用时 follow-up 返回 503。应用 health 分开显示模型配置与资料就绪，不把未配置依赖显示为任务成功。完整启动、备份/恢复与关闭开关步骤见 [deployment.md](deployment.md)。
+安装依赖和启动须用相同 Node 大版本；上述 Node 路径为本机已验证的 24.15.0，仅改变当前窗口 PATH。其他机器按实际安装目录调整。登录后选择自己的现有工作区，从侧栏进入“电商运营”。人工 Goal 另需既有 `MINICLAW_PERSONAL_GOALS=true`；未启用时 follow-up 返回 503。应用 health 分开显示模型配置与资料就绪，不把未配置依赖显示为任务成功。完整启动、备份/恢复与关闭开关步骤见 [deployment.md](deployment.md)。
 
 ```powershell
 node scripts/ecommerce-check.mjs all
